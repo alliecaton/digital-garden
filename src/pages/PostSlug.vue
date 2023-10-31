@@ -8,6 +8,7 @@ import fetch from '@/utils/fetch'
 import { formatDate } from '@/utils/formatDate'
 
 import Loader from '@/components/Loader.vue'
+import Sanitized from '@/components/SanitizedMd.vue'
 
 const route = useRoute()
 
@@ -48,7 +49,7 @@ onMounted(async () => {
     <div class="post__date">{{ date }}</div>
 
     <div class="post__content">
-      {{ post?.content }}
+      <Sanitized :content="post?.content" />
     </div>
   </div>
   <Loader v-else />

@@ -1,29 +1,29 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 import type { Post } from '@/types/Posts'
 
-defineProps<{
+import { formatDate } from '@/utils/formatDate'
+
+const props = defineProps<{
   post: Post
 }>()
 
-const formatDate = (date: string) => {
-  const jsDate = new Date(date)
-
-  return jsDate.toLocaleDateString()
-}
+const date = computed(() => {
+  return formatDate(props.post.updatedAt)
+})
 </script>
 
 <template>
-  <div class="post">
+  <router-link :to="'/posts/' + post.id" class="post">
     <div class="post__title">{{ post.title }}</div>
-    <div class="post__description">
-      {{ post.content }}
-    </div>
-    <div class="post__date">{{ formatDate(post.updatedAt) }}</div>
-  </div>
+    <div class="post__date">{{ date }}</div>
+  </router-link>
 </template>
 
 <style scoped lang="scss">
 .post {
+  display: block;
   padding: 15px 30px;
   transition: 0.3s;
 
@@ -42,14 +42,5 @@ const formatDate = (date: string) => {
   margin-top: 10px;
   font-size: 12px;
   font-style: italic;
-}
-
-.post__description {
-  margin-top: 10px;
-  font-size: 14px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
 }
 </style>

@@ -4,8 +4,8 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <nav class="nav">
-    <RouterLink class="nav-link" to="/">Home</RouterLink>
-    <RouterLink class="nav-link" to="/Posts">Posts</RouterLink>
+    <RouterLink class="nav-link" to="/">home</RouterLink>
+    <RouterLink class="nav-link" to="/Posts">posts</RouterLink>
   </nav>
 </template>
 
@@ -15,7 +15,6 @@ import { RouterLink } from 'vue-router'
 }
 
 .nav-link {
-  text-transform: uppercase;
   color: black;
   font-size: 16px;
 
@@ -27,6 +26,7 @@ import { RouterLink } from 'vue-router'
 .router-link-active {
   text-decoration: underline;
   text-underline-offset: 8px;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 3px;
+  text-decoration-color: $turq;
 }
 </style>

@@ -5,18 +5,20 @@ import DOMPurify from 'dompurify'
 import { onMounted } from 'vue'
 
 const props = defineProps<{
-  content: string
+  content?: string
 }>()
 
 const sanitized = ref('')
 
 onMounted(() => {
-  const mark = marked.parse(props.content, {
-    breaks: true,
-    gfm: true,
-  })
+  if (props.content) {
+    const mark = marked.parse(props.content, {
+      breaks: true,
+      gfm: true,
+    })
 
-  sanitized.value = DOMPurify.sanitize(mark)
+    sanitized.value = DOMPurify.sanitize(mark)
+  }
 })
 </script>
 

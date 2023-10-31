@@ -8,6 +8,7 @@
 :root {
   --base: rgb(27, 27, 28);
   --turq: rgba(21, 225, 164, 0.678);
+  --turq-200: rgb(29, 179, 134);
 }
 
 *,
@@ -20,7 +21,7 @@
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
+  color: var(--base);
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;

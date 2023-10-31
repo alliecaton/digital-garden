@@ -17,6 +17,7 @@ import { RouterLink } from 'vue-router'
 .nav-link {
   color: black;
   font-size: 16px;
+  text-decoration: none;
 
   & + & {
     margin-left: 20px;

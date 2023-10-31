@@ -23,5 +23,19 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-html="sanitized"></div>
+  <div class="sanitized" v-html="sanitized"></div>
 </template>
+
+<style scoped lang="scss">
+:deep(p) {
+  margin: 15px 0;
+}
+
+:deep(h3) {
+  font-weight: 700;
+}
+
+:deep(h2) {
+  font-weight: 700;
+}
+</style>

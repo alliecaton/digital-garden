@@ -25,6 +25,8 @@ const date = computed(() => {
 .post {
   display: block;
   padding: 15px 30px;
+  color: $base;
+  text-decoration: none;
   transition: 0.3s;
 
   &:hover {

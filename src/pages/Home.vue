@@ -16,12 +16,22 @@
 <style scoped lang="scss">
 .title {
   line-height: 1;
-  font-size: 125px;
+  font-size: 18vw;
   color: $base;
   font-family: 'Quality Control';
+
+  @include md {
+    font-size: 125px;
+  }
 }
 
 .intro {
   margin-top: 30px;
+
+  font-size: 12px;
+
+  @include md {
+    font-size: 15px;
+  }
 }
 </style>

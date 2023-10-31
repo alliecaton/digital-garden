@@ -1,1 +1,36 @@
 @forward 'variables';
+
+// Set up breakpoint mixins
+@mixin sm {
+  @media (min-width: #{$sm}) {
+    @content;
+  }
+}
+
+// Medium
+@mixin md {
+  @media (min-width: #{$md}) {
+    @content;
+  }
+}
+
+// Large-Middle
+@mixin lg-md {
+  @media (min-width: #{$lg-md}) {
+    @content;
+  }
+}
+
+// Large
+@mixin lg {
+  @media (min-width: #{$lg}) {
+    @content;
+  }
+}
+
+// Extra large
+@mixin xl {
+  @media (min-width: #{$xl}) {
+    @content;
+  }
+}

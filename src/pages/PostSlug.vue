@@ -7,6 +7,8 @@ import type { Post } from '@/types/Posts'
 import fetch from '@/utils/fetch'
 import { formatDate } from '@/utils/formatDate'
 
+import Loader from '@/components/Loader.vue'
+
 const route = useRoute()
 
 const post = ref<Post | null>(null)
@@ -22,16 +24,21 @@ const date = computed(() => {
 
 onMounted(async () => {
   loading.value = true
-  const res = await fetch({
-    method: 'get',
-    path: '/posts/' + route.params.id,
-  })
 
-  if (res) {
-    post.value = res
+  try {
+    const res = await fetch({
+      method: 'get',
+      path: '/posts/' + route.params.id,
+    })
+
+    if (res) {
+      post.value = res
+    }
+  } catch (e) {
+    console.error(e)
+  } finally {
+    loading.value = false
   }
-
-  loading.value = false
 })
 </script>
 
@@ -44,6 +51,7 @@ onMounted(async () => {
       {{ post?.content }}
     </div>
   </div>
+  <Loader v-else />
 </template>
 
 <style scoped lang="scss">

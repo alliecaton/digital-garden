@@ -29,10 +29,12 @@
 .title {
   line-height: 1;
   font-size: 18vw;
+  text-align: center;
   color: $base;
   font-family: 'Quality Control';
 
   @include md {
+    text-align: left;
     font-size: 125px;
   }
 }

@@ -24,7 +24,7 @@ const date = computed(() => {
 <style scoped lang="scss">
 .post {
   display: block;
-  padding: 15px 30px;
+  padding: 15px;
   color: $base;
   text-decoration: none;
   transition: 0.3s;
@@ -32,6 +32,12 @@ const date = computed(() => {
   &:hover {
     cursor: pointer;
     background-color: $turq;
+  }
+
+  @include sm {
+    text-align: left;
+    padding: 15px 30px;
+    font-size: 125px;
   }
 }
 

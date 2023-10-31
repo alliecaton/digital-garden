@@ -1,0 +1,27 @@
+<script setup lang="ts"></script>
+
+<template>
+  <div class="container">
+    <div class="title">Allie's</div>
+    <div class="title">Digital Garden</div>
+
+    <div class="intro">
+      <p>hello! welcome to my digital garden 🌱</p>
+
+      <p>this is my space to explore and experiment</p>
+    </div>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.title {
+  line-height: 1;
+  font-size: 125px;
+  color: $base;
+  font-family: 'Quality Control';
+}
+
+.intro {
+  margin-top: 30px;
+}
+</style>

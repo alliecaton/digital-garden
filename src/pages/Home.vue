@@ -2,9 +2,6 @@
 
 <template>
   <div class="container">
-    <div class="title">Allie's</div>
-    <div class="title">Digital Garden</div>
-
     <div class="intro">
       <p>hello! welcome to my digital garden 🌱</p>
 
@@ -26,18 +23,18 @@
 </template>
 
 <style scoped lang="scss">
-.title {
-  line-height: 1;
-  font-size: 18vw;
-  text-align: center;
-  color: $base;
-  font-family: 'Quality Control';
+// .title {
+//   line-height: 1;
+//   font-size: 18vw;
+//   text-align: center;
+//   color: $base;
+//   font-family: 'Quality Control';
 
-  @include md {
-    text-align: left;
-    font-size: 125px;
-  }
-}
+//   @include md {
+//     text-align: left;
+//     font-size: 125px;
+//   }
+// }
 
 .intro {
   margin-top: 30px;

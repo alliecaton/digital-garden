@@ -38,4 +38,8 @@ onMounted(() => {
 :deep(h2) {
   font-weight: 700;
 }
+
+:deep(img) {
+  width: 100%;
+}
 </style>

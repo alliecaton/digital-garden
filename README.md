@@ -1,46 +1,19 @@
-# digital-garden
+# My Digital Garden 🌷
 
-This template should help get you started developing with Vue 3 in Vite.
+Welcome to my digital garden! 🌱
 
-## Recommended IDE Setup
+[Visit my digital Garden](garden.alliecaton.com)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+This website is a hobby space for me to plant thoughts about dev projects, media, and/or whatever else is on my mind. It's pretty minimal right now, and will probably always be minimal, but I do plan to expand on it over time in whatever way feels fun and beneficial.
 
-## Type Support for `.vue` Imports in TS
+In addition to the user-facing pages of this site, I also created an authenticated admin area for me to create, edit, and delete posts. It's pretty simple (and not very styled since it's just me who uses it), but I wanted to be able to create posts on mobile, not just locally from my computer or using any third party systems.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+You can read more about the creation of this website, the plan, and inspiration [in my first post](https://garden.alliecaton.com/posts/3)
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+Take a look and smell the flowers 🌻
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## Screenshots
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+![](./public/promo/home.png)
+![](./public/promo/posts.png)
+![](./public/promo/admin.png)

@@ -44,7 +44,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div v-if="!loading" class="container">
+  <div v-if="!loading" class="container constraint">
     <div class="post__title">{{ post?.title }}</div>
     <div class="post__date">{{ date }}</div>
 
@@ -56,6 +56,21 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
+.constraint {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @include sm {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @include md {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+}
+
 .post__title {
   font-size: 24px;
 }
@@ -70,4 +85,3 @@ onMounted(async () => {
   margin-top: 20px;
 }
 </style>
-@/composables/fetch

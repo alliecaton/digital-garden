@@ -31,10 +31,9 @@ onMounted(async () => {
 
 <template>
   <div v-if="!loading">
-    <div v-for="post in posts" :key="post.id">
+    <div class="posts" v-for="post in posts" :key="post.id">
       <PostCard :post="post" />
     </div>
   </div>
   <Loader v-else />
 </template>
-@/composables/fetch

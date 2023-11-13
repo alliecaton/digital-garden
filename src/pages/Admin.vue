@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import fetch from '@/utils/fetch'
 
 import PostCreate from '@/components/PostCreate.vue'
 
-const loggedIn = ref(false)
+import { useAuthStore } from '@/stores/auth'
+
+import { useRoute } from 'vue-router'
+
+const store = useAuthStore()
+const route = useRoute()
 
 const username = ref('')
 const password = ref('')
@@ -13,53 +17,21 @@ const token = ref('')
 
 const login = async () => {
   try {
-    const res = await fetch({
-      method: 'post',
-      path: '/login',
-      data: {
-        username: username.value,
-        password: password.value,
-      },
-      headers: {
-        'x-access-token': token.value,
-      },
-    })
-
-    if (res) {
-      token.value = res.accessToken
-      loggedIn.value = true
-    }
-  } catch (e) {
-    console.error(e)
-  }
-}
-
-const checkIfLoggedIn = async () => {
-  loggedIn.value = false
-
-  try {
-    const res = await fetch({
-      method: 'get',
-      path: '/user',
-    })
-
-    if (res) {
-      loggedIn.value = true
-    } else {
-      loggedIn.value = false
-    }
+    store.login(username.value, password.value)
   } catch (e) {
     console.error(e)
   }
 }
 
 onMounted(() => {
-  checkIfLoggedIn()
+  if (route.name === 'logout') {
+    store.logout()
+  }
 })
 </script>
 
 <template>
-  <div class="container" v-if="!loggedIn">
+  <div class="container" v-if="!store.token">
     <div>
       <label>username: </label>
       <input v-model="username" />

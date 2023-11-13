@@ -70,3 +70,4 @@ onMounted(async () => {
   margin-top: 20px;
 }
 </style>
+@/composables/fetch

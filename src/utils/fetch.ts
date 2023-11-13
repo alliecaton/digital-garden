@@ -8,12 +8,17 @@ type Config = {
 }
 
 export default async function fetch({ method, path, data, headers }: Config) {
+  const token = JSON.parse(localStorage.getItem('token') || '')
+
   try {
     const res = await axios({
       method: method,
       url: import.meta.env.VITE_API_BASE + path,
       data: data,
-      headers: headers,
+      headers: {
+        ...headers,
+        ...(token && { 'x-access-token': token }),
+      },
     })
 
     if (res.status === 200) return res.data

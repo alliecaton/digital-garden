@@ -37,26 +37,26 @@ const createOrUpdate = async () => {
         title: title.value,
         content: content.value,
       },
-      headers: {
-        'x-access-token': props.submitToken,
-      },
     })
 
     if (data) {
       success.value = true
+      getPosts()
     }
   } catch (e) {
     console.error(e)
   } finally {
-    getPosts()
+    success.value = false
   }
 }
 
 const deletePost = async (post: Post) => {
   success.value = false
+  method.value = 'delete'
+
   try {
     const data = await fetch({
-      method: 'delete',
+      method: method.value,
       path: `/posts/${post.id}`,
       headers: {
         'x-access-token': props.submitToken,
@@ -65,11 +65,12 @@ const deletePost = async (post: Post) => {
 
     if (data) {
       success.value = true
+      getPosts()
     }
   } catch (e) {
     console.error(e)
   } finally {
-    getPosts()
+    success.value = false
   }
 }
 
@@ -190,3 +191,4 @@ textarea {
   text-decoration: none;
 }
 </style>
+@/composables/fetch

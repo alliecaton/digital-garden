@@ -158,7 +158,7 @@ const previewButtonText = computed(() => {
     <button @click="togglePreview">
       {{ previewButtonText }}
     </button>
-    <Sanitized v-if="preview" :content="content" />
+    <Sanitized class="preview-section" v-if="preview" :content="content" />
 
     <div class="posts" v-if="!loadingPosts">
       <div class="post" v-for="post in posts" :key="post.id">
@@ -207,5 +207,11 @@ textarea {
   padding: 10px;
   text-decoration: none;
 }
+
+.preview-section {
+  border: 1px solid black;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 2px;
+}
 </style>
-@/composables/fetch

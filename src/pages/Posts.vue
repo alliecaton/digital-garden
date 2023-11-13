@@ -37,3 +37,4 @@ onMounted(async () => {
   </div>
   <Loader v-else />
 </template>
+@/composables/fetch

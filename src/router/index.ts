@@ -24,7 +24,12 @@ const router = createRouter({
     },
     {
       path: '/admin',
-      name: 'create post',
+      name: 'admin',
+      component: Admin,
+    },
+    {
+      path: '/admin/logout',
+      name: 'logout',
       component: Admin,
     },
   ],

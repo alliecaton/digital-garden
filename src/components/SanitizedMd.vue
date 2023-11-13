@@ -17,6 +17,13 @@ onMounted(() => {
       gfm: true,
     })
 
+    DOMPurify.addHook('afterSanitizeAttributes', function (node) {
+      // set all elements owning target to target=_blank
+      if ('target' in node) {
+        node.setAttribute('target', '_blank')
+      }
+    })
+
     sanitized.value = DOMPurify.sanitize(mark)
   }
 })
@@ -41,5 +48,9 @@ onMounted(() => {
 
 :deep(img) {
   width: 100%;
+}
+
+:deep(ul) {
+  margin: 15px 0;
 }
 </style>

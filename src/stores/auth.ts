@@ -5,7 +5,8 @@ import fetch from '@/utils/fetch'
 export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
-    token: JSON.parse(localStorage.getItem('token') || ''),
+    // @ts-ignore-next-line
+    token: JSON.parse(localStorage.getItem('token')),
   }),
   actions: {
     async getUser() {},

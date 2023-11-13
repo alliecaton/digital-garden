@@ -13,11 +13,9 @@ const route = useRoute()
 const username = ref('')
 const password = ref('')
 
-const token = ref('')
-
 const login = async () => {
   try {
-    store.login(username.value, password.value)
+    await store.login(username.value, password.value)
   } catch (e) {
     console.error(e)
   }
@@ -45,6 +43,6 @@ onMounted(() => {
     <button @click="login">Login</button>
   </div>
   <div v-else>
-    <PostCreate :submitToken="token" />
+    <PostCreate :submitToken="store.token" />
   </div>
 </template>

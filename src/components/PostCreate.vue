@@ -2,6 +2,7 @@
 import { ref, onMounted, computed } from 'vue'
 
 import Loader from '@/components/Loader.vue'
+import Sanitized from '@/components/SanitizedMd.vue'
 
 import type { Post } from '@/types/Posts'
 
@@ -119,6 +120,17 @@ const submitButtonText = computed(() => {
 
   return 'update post'
 })
+
+const preview = ref(false)
+const togglePreview = () => {
+  preview.value = !preview.value
+}
+
+const previewButtonText = computed(() => {
+  if (preview.value) return 'hide preview'
+
+  return 'show preview'
+})
 </script>
 
 <template>
@@ -142,6 +154,11 @@ const submitButtonText = computed(() => {
     </div>
 
     <button @click="createOrUpdate">{{ submitButtonText }}</button>
+    <br />
+    <button @click="togglePreview">
+      {{ previewButtonText }}
+    </button>
+    <Sanitized v-if="preview" :content="content" />
 
     <div class="posts" v-if="!loadingPosts">
       <div class="post" v-for="post in posts" :key="post.id">

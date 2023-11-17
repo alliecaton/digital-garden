@@ -10,7 +10,7 @@ const props = defineProps<{
 }>()
 
 const date = computed(() => {
-  return formatDate(props.post.updatedAt)
+  return formatDate(props.post.createdAt)
 })
 </script>
 

@@ -17,7 +17,7 @@ const loading = ref(true)
 
 const date = computed(() => {
   if (post.value?.updatedAt) {
-    return formatDate(post.value.updatedAt)
+    return formatDate(post.value.createdAt)
   }
 
   return ''

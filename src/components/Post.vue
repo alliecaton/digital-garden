@@ -15,7 +15,7 @@ const date = computed(() => {
 </script>
 
 <template>
-  <router-link :to="'/posts/' + post.id" class="post">
+  <router-link :to="'/posts/' + post.slug" class="post">
     <div class="post__title">{{ post.title }}</div>
     <div class="post__date">{{ date }}</div>
   </router-link>

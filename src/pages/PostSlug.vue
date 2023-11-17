@@ -29,7 +29,7 @@ onMounted(async () => {
   try {
     const res = await fetch({
       method: 'get',
-      path: '/posts/' + route.params.id,
+      path: '/posts/' + route.params.slug,
     })
 
     if (res) {

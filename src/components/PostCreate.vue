@@ -12,7 +12,7 @@ const props = defineProps<{
   submitToken?: string
 }>()
 
-const id = ref<number | null>(null)
+const slug = ref<string | null>(null)
 const title = ref('')
 const content = ref('')
 
@@ -25,7 +25,7 @@ const createOrUpdate = async () => {
   let path = '/posts'
 
   if (isPut) {
-    path = `/posts/${id.value}`
+    path = `/posts/${slug.value}`
   }
 
   success.value = false
@@ -47,7 +47,9 @@ const createOrUpdate = async () => {
   } catch (e) {
     console.error(e)
   } finally {
-    success.value = false
+    setTimeout(() => {
+      success.value = false
+    }, 2000)
   }
 }
 
@@ -58,7 +60,7 @@ const deletePost = async (post: Post) => {
   try {
     const data = await fetch({
       method: method.value,
-      path: `/posts/${post.id}`,
+      path: `/posts/${post.slug}`,
       headers: {
         'x-access-token': props.submitToken,
       },
@@ -71,7 +73,9 @@ const deletePost = async (post: Post) => {
   } catch (e) {
     console.error(e)
   } finally {
-    success.value = false
+    setTimeout(() => {
+      success.value = false
+    }, 2000)
   }
 }
 
@@ -102,7 +106,7 @@ onMounted(() => {
 const populateNewPost = () => {
   title.value = ''
   content.value = ''
-  id.value = null
+  slug.value = null
 
   method.value = 'post'
 }
@@ -110,7 +114,7 @@ const populateNewPost = () => {
 const selectPost = (post: Post) => {
   title.value = post.title
   content.value = post.content
-  id.value = post.id
+  slug.value = post.slug
 
   method.value = 'put'
 }

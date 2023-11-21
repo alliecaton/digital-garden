@@ -24,6 +24,7 @@ import { RouterLink } from 'vue-router'
   }
 }
 
+.nav-link:hover,
 .router-link-active {
   text-decoration: underline;
   text-underline-offset: 8px;

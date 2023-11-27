@@ -21,7 +21,9 @@ const login = async () => {
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
+  await store.checkUser()
+
   if (route.name === 'logout') {
     store.logout()
   }
@@ -29,7 +31,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container" v-if="!store.token">
+  <div class="container" v-if="!store.loggedIn">
     <div>
       <label>username: </label>
       <input v-model="username" />

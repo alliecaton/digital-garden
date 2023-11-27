@@ -1,69 +1,61 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import RecentPosts from '@/components/RecentPosts.vue'
+</script>
 
 <template>
   <div class="container">
     <div class="intro">
-      <p>hello! welcome to my digital garden 🌱</p>
+      <div class="intro__about">
+        <div class="text">
+          <p>hello! welcome to my digital garden 🌱</p>
 
-      <p>this is my always-in-progress space to explore and experiment</p>
+          <p>this is my always-in-progress space to explore and experiment</p>
 
-      <div class="about">
-        <p>
-          my name is allie and i'm a full stack software engineer based in san
-          diego, ca.
-        </p>
+          <div class="about">
+            <p>
+              my name is allie and i'm a full stack software engineer based in
+              san diego, ca.
+            </p>
 
-        <p class="spacedp">
-          i have a lot of hobbies and like the idea of using this garden to
-          catalog some of them. most notably, i love to
-          <a
-            target="blank"
-            href="https://app.thestorygraph.com/profile/allieeeee"
-            >read</a
-          >, <a target="blank" href="https://github.com/alliecaton">code</a>,
-          boulder, play
-          <a target="blank" href="https://www.stepmania.com/"
-            >dance dance revolution</a
-          >
-          and engage in my community.
-        </p>
+            <p class="spacedp">
+              i have a lot of hobbies and like the idea of using this garden to
+              catalog some of them. most notably, i love to
+              <a
+                target="blank"
+                href="https://app.thestorygraph.com/profile/allieeeee"
+                >read</a
+              >,
+              <a target="blank" href="https://github.com/alliecaton">code</a>,
+              boulder, play
+              <a target="blank" href="https://www.stepmania.com/"
+                >dance dance revolution</a
+              >
+              and engage with my community.
+            </p>
+
+            <p class="spacedp">
+              check me out on
+              <a
+                class="link"
+                href="https://github.com/alliecaton"
+                target="blank"
+                >github</a
+              >,
+              <a class="link" href="https://alliecaton.com" target="blank"
+                >my portfolio</a
+              >, and
+              <a
+                class="link"
+                href="https://www.linkedin.com/in/alliecaton/"
+                target="blank"
+                >linkedin</a
+              >.
+            </p>
+          </div>
+        </div>
       </div>
-
-      <div class="links-container">
-        <div>🔗 personal links:</div>
-        <div class="links">
-          <a class="link" href="https://github.com/alliecaton" target="blank"
-            >github</a
-          >
-          |
-          <a class="link" href="https://alliecaton.com" target="blank"
-            >portfolio</a
-          >
-          |
-          <a
-            class="link"
-            href="https://www.linkedin.com/in/alliecaton/"
-            target="blank"
-            >linkedin</a
-          >
-        </div>
-
-        <div class="garden-links">🔗 garden links:</div>
-        <div class="links">
-          <a
-            class="link"
-            href="https://github.com/alliecaton/digital-garden"
-            target="blank"
-            >client repo</a
-          >
-          |
-          <a
-            class="link"
-            href="https://github.com/alliecaton/api-digital-garden"
-            target="blank"
-            >api repo</a
-          >
-        </div>
+      <div class="recent-posts">
+        <RecentPosts />
       </div>
     </div>
   </div>
@@ -74,27 +66,28 @@
   margin-top: 30px;
 }
 
-.links-container {
-  margin-top: 30px;
-  padding: 15px;
-  border-radius: 4px;
-  background-color: rgba(238, 237, 237, 0.671);
+.intro {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+
+  @include md {
+    gap: 50px;
+  }
+}
+
+.intro__about {
+  flex-basis: 50%;
+}
+
+.text {
+  // min-width: 300px;
+  padding: 30px;
+  border: 2px solid $turq;
+  background-color: rgb(29, 179, 134, 0.1);
 }
 
 .spacedp {
   margin-top: 10px;
-}
-
-.link {
-  display: block;
-}
-
-.links {
-  display: flex;
-  gap: 15px;
-}
-
-.garden-links {
-  margin-top: 15px;
 }
 </style>

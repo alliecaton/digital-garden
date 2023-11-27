@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
+import type { Book } from '@/types/Books'
+
 import fetch from '@/utils/fetch'
 
 import Loader from '@/components/Loader.vue'
 
 const loading = ref(true)
 
-const books = ref([])
+const books = ref<Book[]>([])
 
 onMounted(async () => {
   try {
@@ -16,7 +18,9 @@ onMounted(async () => {
       path: '/current-book',
     })
 
-    console.log(res)
+    if (res?.books) {
+      books.value = res.books
+    }
   } catch (e) {
     console.log(e)
   }
@@ -26,10 +30,55 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Loader v-if="loading" />
-  <div v-else>
-    <div v-for="book in books" :key="book.title">
-      {{ book.title }}
+  <div class="spacing">
+    <strong>currently reading:</strong>
+    <Loader v-if="loading" />
+    <div v-else class="books">
+      <div class="book" v-for="book in books" :key="book.title">
+        <a :href="book.link"> <img class="book__img" :src="book.img" /></a>
+        <div class="book__info">
+          <a :href="book.link">{{ book.title }}</a>
+          <div>{{ book.author }}</div>
+        </div>
+      </div>
     </div>
+
+    <a class="more" href="https://app.thestorygraph.com/profile/allieeeee"
+      >see more books</a
+    >
   </div>
 </template>
+
+<style scoped lang="scss">
+.spacing {
+  margin-top: 30px;
+}
+
+.books {
+  margin-top: 15px;
+}
+
+.book__info {
+  padding: 15px;
+  align-self: center;
+}
+
+.book {
+  display: flex;
+  height: 100px;
+
+  & + & {
+    margin-top: 15px;
+  }
+}
+
+.book__img {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.more {
+  display: block;
+  margin-top: 15px;
+}
+</style>

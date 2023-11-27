@@ -13,7 +13,7 @@
 }
 
 html {
-  background-color: rgba(253, 251, 248, 0.997);
+  background-color: rgba(251, 252, 255, 0.997);
 }
 
 .container {
@@ -25,7 +25,7 @@ html {
 }
 
 a {
-  color: var(--turq-mid);
+  color: var(--mid);
 }
 
 strong {

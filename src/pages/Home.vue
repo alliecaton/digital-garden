@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import RecentPosts from '@/components/RecentPosts.vue'
+import CurrentlyReading from '@/components/CurrentlyReading.vue'
 </script>
 
 <template>
@@ -50,6 +51,8 @@ import RecentPosts from '@/components/RecentPosts.vue'
       </div>
       <div class="recent-posts">
         <RecentPosts />
+
+        <CurrentlyReading />
       </div>
     </div>
   </div>
@@ -75,10 +78,16 @@ import RecentPosts from '@/components/RecentPosts.vue'
 }
 
 .text {
-  min-width: 300px;
   padding: 30px;
-  border: 2px solid $turq;
-  background-color: rgb(29, 179, 134, 0.1);
+  border-radius: 4px;
+  border: 2px solid $light;
+  background-color: $faded;
+  min-width: unset;
+  align-self: start;
+
+  @include sm {
+    min-width: 300px;
+  }
 }
 
 .spacedp {

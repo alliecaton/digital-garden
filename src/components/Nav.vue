@@ -29,6 +29,6 @@ import { RouterLink } from 'vue-router'
   text-decoration: underline;
   text-underline-offset: 8px;
   text-decoration-thickness: 3px;
-  text-decoration-color: $turq;
+  text-decoration-color: $light;
 }
 </style>

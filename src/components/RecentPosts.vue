@@ -17,7 +17,7 @@ const truncatedList = computed(() => {
 <template>
   <Loader v-if="loading" />
   <div v-else>
-    <p>most recent posts:</p>
+    <strong>most recent posts:</strong>
     <div class="post" v-for="post in truncatedList" :key="post.id">
       <span>-></span>
       <router-link class="post__link" :to="'/posts/' + post.slug">
@@ -37,11 +37,15 @@ const truncatedList = computed(() => {
 
 .post__link {
   color: $base;
-  max-width: 420px;
   white-space: nowrap;
   overflow: hidden;
   display: block;
   text-overflow: ellipsis;
+  max-width: 200px;
+
+  @include sm {
+    max-width: 420px;
+  }
 }
 
 .more-link {

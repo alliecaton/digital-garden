@@ -7,8 +7,9 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --base: rgb(27, 27, 28);
-  --turq: rgba(21, 225, 164, 0.678);
-  --turq-200: rgb(29, 179, 134);
+  --light: rgba(21, 225, 164, 0.678);
+  --mid: rgb(29, 179, 134);
+  --faded: rgb(29, 179, 134, 0.1);
 }
 
 *,

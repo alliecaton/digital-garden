@@ -179,7 +179,7 @@ const previewButtonText = computed(() => {
 <style scoped lang="scss">
 .success {
   font-weight: bold;
-  color: $turq;
+  color: $light;
   margin-bottom: 20px;
 }
 

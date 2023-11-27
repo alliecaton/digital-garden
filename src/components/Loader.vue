@@ -9,7 +9,7 @@
   display: block;
   margin: 50px auto;
   position: relative;
-  color: $turq;
+  color: $light;
   box-sizing: border-box;
   animation: animloader 1s linear infinite alternate;
 }

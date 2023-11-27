@@ -31,7 +31,7 @@ const date = computed(() => {
 
   &:hover {
     cursor: pointer;
-    background-color: $turq;
+    background-color: $light;
   }
 
   @include sm {

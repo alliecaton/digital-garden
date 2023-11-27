@@ -1,31 +1,15 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import fetch from '@/utils/fetch'
+import { onMounted } from 'vue'
 
-import type { Post } from '@/types/Posts'
+import { useGetPosts } from '@/composables/useGetPosts'
 
 import PostCard from '@/components/Post.vue'
 import Loader from '@/components/Loader.vue'
 
-const posts = ref<Post[]>([])
-const loading = ref(true)
+const { posts, loading, getPosts } = useGetPosts()
 
-onMounted(async () => {
-  loading.value = true
-  try {
-    const res = await fetch({
-      method: 'get',
-      path: '/posts',
-    })
-
-    if (res) {
-      posts.value = res
-    }
-  } catch (e) {
-    console.error(e)
-  } finally {
-    loading.value = false
-  }
+onMounted(() => {
+  getPosts()
 })
 </script>
 

@@ -26,6 +26,12 @@ html {
 
 a {
   color: var(--mid);
+  transition: 0.3s;
+  text-underline-offset: 4px;
+
+  &:hover {
+    text-decoration: underline dotted;
+  }
 }
 
 strong {

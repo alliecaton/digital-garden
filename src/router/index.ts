@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
 import Posts from '@/pages/Posts.vue'
 import PostSlug from '@/pages/PostSlug.vue'
+import Bookmarks from '@/pages/Bookmarks.vue'
 import Admin from '@/pages/Admin.vue'
 
 const router = createRouter({
@@ -21,6 +22,11 @@ const router = createRouter({
       path: '/posts/:slug',
       name: 'post slug',
       component: PostSlug,
+    },
+    {
+      path: '/bookmarks',
+      name: 'bookmarks',
+      component: Bookmarks,
     },
     {
       path: '/admin',

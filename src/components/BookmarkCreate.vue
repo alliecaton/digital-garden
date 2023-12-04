@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-import type { Bookmark, Emoji } from '@/types/Bookmarks'
+import type { Tag } from '@/types/Bookmarks'
+
+import { useGetBookmarks } from '@/composables/useGetBookmarks'
 
 import fetch from '@/utils/fetch'
 
@@ -10,25 +12,7 @@ const description = ref('')
 const url = ref('')
 const quote = ref('')
 
-const bookmarks = ref<Bookmark[]>([])
-const loadingBookmarks = ref(true)
-const getBookmarks = async () => {
-  loadingBookmarks.value = true
-  try {
-    const data = await fetch({
-      method: 'get',
-      path: '/bookmarks',
-    })
-
-    if (data) {
-      bookmarks.value = data
-    }
-  } catch (e) {
-    console.error(e)
-  } finally {
-    loadingBookmarks.value = false
-  }
-}
+const { getBookmarks } = useGetBookmarks()
 
 const createBookmark = async () => {
   const payload = {
@@ -59,7 +43,9 @@ const createBookmark = async () => {
   }
 }
 
-const tags = ref<Emoji[]>([])
+type UnsavedTag = Omit<Tag, 'id'>
+
+const tags = ref<UnsavedTag[]>([])
 const emoji = ref('')
 const name = ref('')
 

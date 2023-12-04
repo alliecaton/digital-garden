@@ -72,24 +72,20 @@ const showBookmarks = computed(() => tab.value === 'bookmarks')
         @click="updateTab('posts')"
         :class="{ 'button--active': showPosts }"
       >
-        Posts
+        posts
       </button>
       <button
         class="button"
         @click="updateTab('bookmarks')"
         :class="{ 'button--active': showBookmarks }"
       >
-        Bookmarks
+        bookmarks
       </button>
     </div>
 
-    <KeepAlive v-if="showPosts">
-      <PostCreate />
-    </KeepAlive>
+    <PostCreate v-if="showPosts" />
 
-    <KeepAlive v-if="showBookmarks">
-      <BookmarkCreate />
-    </KeepAlive>
+    <BookmarkCreate v-if="showBookmarks" />
   </div>
 </template>
 
@@ -105,9 +101,9 @@ const showBookmarks = computed(() => tab.value === 'bookmarks')
   border: none;
   background-color: transparent;
   border-radius: 4px 4px 0 0;
-
   cursor: pointer;
   padding: 10px;
+  font-family: 'Sometype Mono', monospace;
 
   &:hover {
     background-color: $light;

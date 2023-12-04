@@ -18,9 +18,11 @@ defineProps<{
 
     <div class="quote">{{ bookmark.quote }}</div>
 
-    <div class="tags">
-      <div class="tag" v-for="tag in bookmark.tags" :key="tag.id">
-        <Tag :tag="tag" />
+    <div v-if="bookmark.tags?.length">
+      <div class="tags">
+        <div class="tag" v-for="tag in bookmark.tags" :key="tag.id">
+          <Tag :tag="tag" />
+        </div>
       </div>
     </div>
   </div>

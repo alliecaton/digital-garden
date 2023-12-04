@@ -26,6 +26,11 @@ html {
 
 a {
   color: var(--mid);
+  text-underline-offset: 4px;
+
+  &:hover {
+    text-decoration: underline dotted;
+  }
 }
 
 strong {

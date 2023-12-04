@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import RecentPosts from '@/components/RecentPosts.vue'
+import RecentBookmarks from '@/components/RecentBookmarks.vue'
 import CurrentlyReading from '@/components/CurrentlyReading.vue'
 </script>
 
@@ -25,11 +26,8 @@ import CurrentlyReading from '@/components/CurrentlyReading.vue'
               href="https://app.thestorygraph.com/profile/allieeeee"
               >read</a
             >, <a target="blank" href="https://github.com/alliecaton">code</a>,
-            boulder, play
-            <a target="blank" href="https://www.stepmania.com/"
-              >dance dance revolution</a
-            >
-            and engage with my community.
+            boulder, play video games, make things with my hands, and engage
+            with my community.
           </p>
 
           <p class="spacedp">
@@ -49,12 +47,13 @@ import CurrentlyReading from '@/components/CurrentlyReading.vue'
           </p>
         </div>
       </div>
-      <div class="recent-posts">
+      <div class="recents">
         <RecentPosts />
-
-        <CurrentlyReading />
+        <RecentBookmarks class="bookmarks" />
       </div>
     </div>
+
+    <CurrentlyReading />
   </div>
 </template>
 
@@ -92,5 +91,9 @@ import CurrentlyReading from '@/components/CurrentlyReading.vue'
 
 .spacedp {
   margin-top: 10px;
+}
+
+.bookmarks {
+  margin-top: 30px;
 }
 </style>

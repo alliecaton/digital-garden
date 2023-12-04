@@ -8,10 +8,6 @@ import type { Post } from '@/types/Posts'
 
 import fetch from '@/utils/fetch'
 
-const props = defineProps<{
-  submitToken?: string
-}>()
-
 const slug = ref<string | null>(null)
 const title = ref('')
 const content = ref('')
@@ -61,9 +57,6 @@ const deletePost = async (post: Post) => {
     const data = await fetch({
       method: method.value,
       path: `/posts/${post.slug}`,
-      headers: {
-        'x-access-token': props.submitToken,
-      },
     })
 
     if (data) {

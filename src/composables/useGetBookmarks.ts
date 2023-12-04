@@ -1,22 +1,22 @@
 import { ref } from 'vue'
 import fetch from '@/utils/fetch'
 
-import type { Post } from '@/types/Posts'
+import type { Bookmark } from '@/types/Bookmarks'
 
-export function useGetPosts() {
+export function useGetBookmarks() {
   const loading = ref(true)
-  const posts = ref<Post[]>([])
+  const bookmarks = ref<Bookmark[]>([])
 
-  const getPosts = async () => {
+  const getBookmarks = async () => {
     loading.value = true
     try {
       const res = await fetch({
         method: 'get',
-        path: '/posts',
+        path: '/bookmarks',
       })
 
       if (res) {
-        posts.value = res
+        bookmarks.value = res
       }
     } catch (e) {
       console.error(e)
@@ -26,8 +26,8 @@ export function useGetPosts() {
   }
 
   return {
-    getPosts,
+    getBookmarks,
     loading,
-    posts,
+    bookmarks,
   }
 }

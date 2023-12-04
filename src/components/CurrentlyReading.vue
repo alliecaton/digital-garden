@@ -52,6 +52,7 @@ onMounted(async () => {
 <style scoped lang="scss">
 .spacing {
   margin-top: 30px;
+  display: block;
 }
 
 .books {
@@ -64,6 +65,7 @@ onMounted(async () => {
 }
 
 .book {
+  width: fit-content;
   display: flex;
   height: 100px;
 

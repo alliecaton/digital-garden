@@ -19,7 +19,7 @@ const truncatedList = computed(() => {
   <div v-else>
     <strong>most recent bookmarks:</strong>
     <div class="bookmark" v-for="bookmark in truncatedList" :key="bookmark.id">
-      <span>-></span>
+      <span class="bookmark__arrow">-></span>
       <a class="bookmark__link" target="_blank" :href="bookmark.url">
         {{ bookmark.title }}
       </a>
@@ -48,6 +48,10 @@ const truncatedList = computed(() => {
   @include sm {
     max-width: 420px;
   }
+}
+
+.bookmark__arrow {
+  white-space: nowrap;
 }
 
 .more-link {

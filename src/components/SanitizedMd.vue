@@ -53,4 +53,18 @@ onMounted(() => {
 :deep(ul) {
   margin: 15px 0;
 }
+
+:deep(pre) {
+  border-radius: 4px;
+  background-color: #eff1f2;
+  padding: 16px;
+  white-space: pre-line;
+}
+
+:deep(code) {
+  border-radius: 2px;
+  background-color: #eff1f2;
+  padding: 2px 4px;
+  white-space: pre-line;
+}
 </style>

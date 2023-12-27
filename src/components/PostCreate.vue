@@ -8,9 +8,17 @@ import type { Post } from '@/types/Posts'
 
 import fetch from '@/utils/fetch'
 
+const id = ref<null | number>(null)
+
 const slug = ref<string | null>(null)
 const title = ref('')
 const content = ref('')
+
+type Payload = {
+  title: string
+  content: string
+  id?: number
+}
 
 const method = ref('post')
 
@@ -20,8 +28,20 @@ const createOrUpdate = async () => {
 
   let path = '/posts'
 
+  let payload: Payload = {
+    title: title.value,
+    content: content.value,
+  }
+
   if (isPut) {
     path = `/posts/${slug.value}`
+  }
+
+  if (id.value && isPut) {
+    payload = {
+      ...payload,
+      id: id.value,
+    }
   }
 
   success.value = false
@@ -30,11 +50,7 @@ const createOrUpdate = async () => {
     const data = await fetch({
       method: method.value,
       path: path,
-      data: {
-        // id: idText,
-        title: title.value,
-        content: content.value,
-      },
+      data: payload,
     })
 
     if (data) {
@@ -58,6 +74,9 @@ const deletePost = async (post: Post) => {
     const data = await fetch({
       method: method.value,
       path: `/posts/${post.slug}`,
+      data: {
+        id: post.id,
+      },
     })
 
     if (data) {
@@ -101,6 +120,7 @@ const populateNewPost = () => {
   title.value = ''
   content.value = ''
   slug.value = null
+  id.value = null
 
   method.value = 'post'
 }
@@ -109,6 +129,7 @@ const selectPost = (post: Post) => {
   title.value = post.title
   content.value = post.content
   slug.value = post.slug
+  id.value = post.id
 
   method.value = 'put'
 }

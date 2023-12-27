@@ -29,10 +29,8 @@ onMounted(() => {
 
       if ('target' in node) {
         const link = node.getAttribute('href')
-        console.log(link)
 
         if (link && link.includes('http')) {
-          console.log('in', link.startsWith('#'))
           node.setAttribute('target', '_blank')
         }
       }

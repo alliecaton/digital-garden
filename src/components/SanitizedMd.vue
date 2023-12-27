@@ -76,6 +76,7 @@ onMounted(() => {
   background-color: #eff1f2;
   padding: 16px;
   white-space: pre-line;
+  overflow-wrap: break-word;
 }
 
 :deep(code) {

@@ -18,9 +18,23 @@ onMounted(() => {
     })
 
     DOMPurify.addHook('afterSanitizeAttributes', function (node) {
-      // set all elements owning target to target=_blank
+      // set external links to target=_blank
+      if (node.tagName === 'H1') {
+        const id = node.textContent?.toLowerCase().replace(/\s/g, '-')
+
+        if (id) {
+          node.setAttribute('id', id)
+        }
+      }
+
       if ('target' in node) {
-        node.setAttribute('target', '_blank')
+        const link = node.getAttribute('href')
+        console.log(link)
+
+        if (link && link.includes('http')) {
+          console.log('in', link.startsWith('#'))
+          node.setAttribute('target', '_blank')
+        }
       }
     })
 
@@ -42,6 +56,11 @@ onMounted(() => {
   font-weight: 700;
 }
 
+:deep(h1) {
+  margin: 10px 0;
+}
+
+:deep(h1),
 :deep(h2) {
   font-weight: 700;
 }

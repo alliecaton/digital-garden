@@ -31,6 +31,7 @@ const createOrUpdate = async () => {
       method: method.value,
       path: path,
       data: {
+        // id: idText,
         title: title.value,
         content: content.value,
       },

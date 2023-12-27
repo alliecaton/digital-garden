@@ -19,7 +19,7 @@ onMounted(() => {
 
     DOMPurify.addHook('afterSanitizeAttributes', function (node) {
       // set external links to target=_blank
-      if (node.tagName === 'H1') {
+      if (node.tagName === 'H1' || node.tagName === 'H2') {
         const id = node.textContent?.toLowerCase().replace(/\s/g, '-')
 
         if (id) {

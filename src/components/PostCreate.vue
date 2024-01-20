@@ -3,8 +3,10 @@ import { ref, onMounted, computed } from 'vue'
 
 import Loader from '@/components/Loader.vue'
 import Sanitized from '@/components/SanitizedMd.vue'
+import TagCreate from '@/components/TagCreate.vue'
 
 import type { Post } from '@/types/Posts'
+import type { Tag } from '@/types/Bookmarks'
 
 import fetch from '@/utils/fetch'
 
@@ -14,10 +16,16 @@ const slug = ref<string | null>(null)
 const title = ref('')
 const content = ref('')
 
+const tags = ref<Tag[]>([])
+const updateParentTags = (data: Tag[]) => {
+  tags.value = data
+}
+
 type Payload = {
   title: string
   content: string
   id?: number
+  tags?: Tag[]
 }
 
 const method = ref('post')
@@ -31,6 +39,7 @@ const createOrUpdate = async () => {
   let payload: Payload = {
     title: title.value,
     content: content.value,
+    tags: tags.value,
   }
 
   if (isPut) {
@@ -172,6 +181,8 @@ const previewButtonText = computed(() => {
       <textarea type="textarea" rows="20" v-model="content"></textarea>
     </div>
 
+    <TagCreate @updateParentTags="updateParentTags" />
+
     <button @click="createOrUpdate">{{ submitButtonText }}</button>
     <br />
     <button @click="togglePreview">
@@ -200,6 +211,7 @@ const previewButtonText = computed(() => {
 
 .content {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 input,

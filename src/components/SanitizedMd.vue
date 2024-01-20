@@ -89,14 +89,11 @@ onMounted(async () => {
   border-radius: 4px;
   background-color: #eef0f3;
   padding: 16px;
-  white-space: pre-line;
-  overflow-wrap: break-word;
 }
 
 :deep(code) {
   border-radius: 2px;
   background-color: #eef0f3;
   padding: 2px 4px;
-  white-space: pre-line;
 }
 </style>

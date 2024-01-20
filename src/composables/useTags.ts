@@ -10,7 +10,7 @@ export function useTags() {
   const emoji = ref('')
   const name = ref('')
 
-  const availableTags = ref([])
+  const availableTags = ref<Tag[]>([])
 
   const addTagToList = (tag?: Tag | undefined) => {
     if (tag) {

@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { marked } from 'marked'
+import { Marked } from 'marked'
 import DOMPurify from 'dompurify'
+import 'highlight.js/styles/github.css'
 import { onMounted } from 'vue'
+
+import { markedHighlight } from 'marked-highlight'
+import hljs from 'highlight.js'
 
 const props = defineProps<{
   content?: string
@@ -10,9 +14,19 @@ const props = defineProps<{
 
 const sanitized = ref('')
 
-onMounted(() => {
+onMounted(async () => {
   if (props.content) {
-    const mark = marked.parse(props.content, {
+    const marked = new Marked(
+      markedHighlight({
+        langPrefix: 'hljs language-',
+        highlight(code, lang) {
+          const language = hljs.getLanguage(lang) ? lang : 'plaintext'
+          return hljs.highlight(code, { language }).value
+        },
+      })
+    )
+
+    const mark = await marked.parse(props.content, {
       breaks: true,
       gfm: true,
     })
@@ -73,7 +87,7 @@ onMounted(() => {
 
 :deep(pre) {
   border-radius: 4px;
-  background-color: #eff1f2;
+  background-color: #eef0f3;
   padding: 16px;
   white-space: pre-line;
   overflow-wrap: break-word;
@@ -81,7 +95,7 @@ onMounted(() => {
 
 :deep(code) {
   border-radius: 2px;
-  background-color: #eff1f2;
+  background-color: #eef0f3;
   padding: 2px 4px;
   white-space: pre-line;
 }

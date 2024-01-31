@@ -2,21 +2,32 @@ import { ref } from 'vue'
 import fetch from '@/utils/fetch'
 
 import type { Bookmark } from '@/types/Bookmarks'
+import type { Pagination } from '@/types/Data'
 
 export function useGetBookmarks() {
   const loading = ref(true)
   const bookmarks = ref<Bookmark[]>([])
+  const pagination = ref<Pagination>({} as Pagination)
 
-  const getBookmarks = async () => {
+  const getBookmarks = async (requestPage?: number) => {
     loading.value = true
+
+    const path = `/bookmarks${requestPage ? `?page=${requestPage}` : ''}`
+
     try {
       const res = await fetch({
         method: 'get',
-        path: '/bookmarks',
+        path: path,
       })
 
-      if (res) {
-        bookmarks.value = res
+      if (res?.data) {
+        pagination.value = res.pagination
+
+        if (bookmarks.value.length) {
+          bookmarks.value.push(...res.data)
+        } else {
+          bookmarks.value = res.data
+        }
       }
     } catch (e) {
       console.error(e)
@@ -28,6 +39,7 @@ export function useGetBookmarks() {
   return {
     getBookmarks,
     loading,
+    pagination,
     bookmarks,
   }
 }

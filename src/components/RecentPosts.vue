@@ -6,7 +6,7 @@ import Loader from '@/components/Loader.vue'
 const { posts, loading, getPosts } = useGetPosts()
 
 onMounted(() => {
-  getPosts()
+  getPosts(1)
 })
 
 const truncatedList = computed(() => {

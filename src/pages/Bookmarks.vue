@@ -3,10 +3,11 @@ import { onMounted } from 'vue'
 
 import Loader from '@/components/Loader.vue'
 import BookmarkCard from '@/components/BookmarkCard.vue'
+import Pagination from '@/components/Pagination.vue'
 
 import { useGetBookmarks } from '@/composables/useGetBookmarks'
 
-const { bookmarks, loading, getBookmarks } = useGetBookmarks()
+const { bookmarks, loading, getBookmarks, pagination } = useGetBookmarks()
 
 onMounted(() => {
   getBookmarks()
@@ -14,12 +15,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container" v-if="!loading">
+  <div class="container">
     <div class="bookmark" v-for="bookmark in bookmarks" :key="bookmark.id">
       <BookmarkCard :bookmark="bookmark" />
     </div>
   </div>
-  <Loader v-else />
+
+  <Loader v-if="loading" />
+
+  <Pagination :pagination="pagination" :loadMore="getBookmarks" />
 </template>
 
 <style scoped lang="scss">

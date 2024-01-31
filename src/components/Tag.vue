@@ -20,5 +20,9 @@ defineProps<{
   font-size: 10px;
   background-color: $faded;
   color: $mid;
+  width: fit-content;
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
 </style>

@@ -7,7 +7,7 @@ import Pagination from '@/components/Pagination.vue'
 
 import { useGetBookmarks } from '@/composables/useGetBookmarks'
 
-const { bookmarks, loading, getBookmarks } = useGetBookmarks()
+const { bookmarks, loading, getBookmarks, pagination } = useGetBookmarks()
 
 onMounted(() => {
   getBookmarks()
@@ -23,7 +23,7 @@ onMounted(() => {
 
   <Loader v-if="loading" />
 
-  <Pagination :loadMore="getBookmarks" />
+  <Pagination :pagination="pagination" :loadMore="getBookmarks" />
 </template>
 
 <style scoped lang="scss">

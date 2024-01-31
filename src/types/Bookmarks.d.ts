@@ -1,8 +1,4 @@
-export type Tag = {
-  id: number
-  name: string
-  emoji: string
-}
+import { Tag } from './Tags'
 
 export type Bookmark = {
   id: number

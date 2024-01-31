@@ -8,6 +8,8 @@ import TagCreate from '@/components/TagCreate.vue'
 import type { Post, UnsavedPost } from '@/types/Posts'
 import type { Tag } from '@/types/Bookmarks'
 
+import { useGetPosts } from '@/composables/useGetPosts'
+
 import fetch from '@/utils/fetch'
 
 type Payload = {
@@ -24,6 +26,8 @@ const post = reactive<UnsavedPost>({
   slug: '',
   tags: null,
 })
+
+const { posts, loading: loadingPosts, getPosts } = useGetPosts()
 
 const updateParentTags = (data: Tag[]) => {
   post.tags = data
@@ -102,25 +106,25 @@ const deletePost = async (post: Post) => {
   }
 }
 
-const loadingPosts = ref(true)
-const posts = ref<Post[]>([])
-const getPosts = async () => {
-  loadingPosts.value = true
-  try {
-    const data = await fetch({
-      method: 'get',
-      path: '/posts',
-    })
+// const loadingPosts = ref(true)
+// const posts = ref<Post[]>([])
+// const getPosts = async () => {
+//   loadingPosts.value = true
+//   try {
+//     const data = await fetch({
+//       method: 'get',
+//       path: '/posts',
+//     })
 
-    if (data) {
-      posts.value = data
-    }
-  } catch (e) {
-    console.error(e)
-  } finally {
-    loadingPosts.value = false
-  }
-}
+//     if (data) {
+//       posts.value = data
+//     }
+//   } catch (e) {
+//     console.error(e)
+//   } finally {
+//     loadingPosts.value = false
+//   }
+// }
 
 onMounted(() => {
   getPosts()

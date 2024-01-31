@@ -5,11 +5,12 @@ import { useGetPosts } from '@/composables/useGetPosts'
 
 import PostCard from '@/components/Post.vue'
 import Loader from '@/components/Loader.vue'
+import Pagination from '@/components/Pagination.vue'
 
-const { posts, loading, getPosts } = useGetPosts()
+const { posts, loading, getPosts, pagination } = useGetPosts()
 
 onMounted(() => {
-  getPosts()
+  getPosts(1)
 })
 </script>
 
@@ -19,5 +20,8 @@ onMounted(() => {
       <PostCard :post="post" />
     </div>
   </div>
-  <Loader v-else />
+
+  <Loader v-if="loading" />
+
+  <Pagination :pagination="pagination" :loadMore="getPosts" />
 </template>

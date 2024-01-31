@@ -10,7 +10,7 @@ type Config = {
 export default async function fetch({ method, path, data, headers }: Config) {
   // @ts-ignore-next-line
   const token = JSON.parse(localStorage.getItem('token'))
-
+  console.log(data)
   try {
     const res = await axios({
       method: method,

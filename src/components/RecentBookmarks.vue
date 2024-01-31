@@ -6,7 +6,7 @@ import Loader from '@/components/Loader.vue'
 const { bookmarks, loading, getBookmarks } = useGetBookmarks()
 
 onMounted(() => {
-  getBookmarks()
+  getBookmarks(1)
 })
 
 const truncatedList = computed(() => {

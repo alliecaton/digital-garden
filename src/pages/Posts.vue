@@ -15,7 +15,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="!loading">
+  <div>
     <div class="posts" v-for="post in posts" :key="post.id">
       <PostCard :post="post" />
     </div>

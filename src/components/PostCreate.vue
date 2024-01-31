@@ -6,7 +6,7 @@ import Sanitized from '@/components/SanitizedMd.vue'
 import TagCreate from '@/components/TagCreate.vue'
 
 import type { Post, UnsavedPost } from '@/types/Posts'
-import type { Tag } from '@/types/Bookmarks'
+import type { Tag } from '@/types/Tags'
 
 import { useGetPosts } from '@/composables/useGetPosts'
 
@@ -16,7 +16,7 @@ type Payload = {
   title: string
   content: string
   id?: number
-  tags?: Tag[]
+  tags?: Tag[] | null
 }
 
 const post = reactive<UnsavedPost>({
@@ -44,7 +44,13 @@ const createOrUpdate = async () => {
   let payload: Payload = {
     title: post.title,
     content: post.content,
-    tags: post.tags,
+  }
+
+  if (post.tags?.length) {
+    payload = {
+      ...payload,
+      tags: post.tags,
+    }
   }
 
   if (isPut) {

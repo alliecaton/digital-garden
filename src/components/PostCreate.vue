@@ -1,31 +1,32 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, reactive, onMounted, computed } from 'vue'
 
 import Loader from '@/components/Loader.vue'
 import Sanitized from '@/components/SanitizedMd.vue'
 import TagCreate from '@/components/TagCreate.vue'
 
-import type { Post } from '@/types/Posts'
+import type { Post, UnsavedPost } from '@/types/Posts'
 import type { Tag } from '@/types/Bookmarks'
 
 import fetch from '@/utils/fetch'
-
-const id = ref<null | number>(null)
-
-const slug = ref<string | null>(null)
-const title = ref('')
-const content = ref('')
-
-const tags = ref<Tag[]>([])
-const updateParentTags = (data: Tag[]) => {
-  tags.value = data
-}
 
 type Payload = {
   title: string
   content: string
   id?: number
   tags?: Tag[]
+}
+
+const post = reactive<UnsavedPost>({
+  id: null,
+  title: '',
+  content: '',
+  slug: '',
+  tags: null,
+})
+
+const updateParentTags = (data: Tag[]) => {
+  post.tags = data
 }
 
 const method = ref('post')
@@ -37,19 +38,19 @@ const createOrUpdate = async () => {
   let path = '/posts'
 
   let payload: Payload = {
-    title: title.value,
-    content: content.value,
-    tags: tags.value,
+    title: post.title,
+    content: post.content,
+    tags: post.tags,
   }
 
   if (isPut) {
-    path = `/posts/${slug.value}`
+    path = `/posts/${post.slug}`
   }
 
-  if (id.value && isPut) {
+  if (post.id && isPut) {
     payload = {
       ...payload,
-      id: id.value,
+      id: post.id,
     }
   }
 
@@ -126,19 +127,19 @@ onMounted(() => {
 })
 
 const populateNewPost = () => {
-  title.value = ''
-  content.value = ''
-  slug.value = null
-  id.value = null
+  post.title = ''
+  post.content = ''
+  post.slug = ''
+  post.id = null
 
   method.value = 'post'
 }
 
-const selectPost = (post: Post) => {
-  title.value = post.title
-  content.value = post.content
-  slug.value = post.slug
-  id.value = post.id
+const selectPost = (selectedPost: Post) => {
+  post.title = selectedPost.title
+  post.content = selectedPost.content
+  post.slug = selectedPost.slug
+  post.id = selectedPost.id
 
   method.value = 'put'
 }
@@ -172,13 +173,13 @@ const previewButtonText = computed(() => {
     <div>
       <label>title:</label>
       <br />
-      <input type="text" v-model="title" />
+      <input type="text" v-model="post.title" />
     </div>
 
     <div class="content">
       <label>content:</label>
       <br />
-      <textarea type="textarea" rows="20" v-model="content"></textarea>
+      <textarea type="textarea" rows="20" v-model="post.content"></textarea>
     </div>
 
     <TagCreate @updateParentTags="updateParentTags" />
@@ -188,7 +189,7 @@ const previewButtonText = computed(() => {
     <button @click="togglePreview">
       {{ previewButtonText }}
     </button>
-    <Sanitized class="preview-section" v-if="preview" :content="content" />
+    <Sanitized class="preview-section" v-if="preview" :content="post.content" />
 
     <div class="posts" v-if="!loadingPosts">
       <div class="post" v-for="post in posts" :key="post.id">

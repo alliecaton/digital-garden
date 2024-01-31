@@ -3,6 +3,8 @@ import { computed } from 'vue'
 
 import type { Post } from '@/types/Posts'
 
+import Tag from '@/components/Tag.vue'
+
 import { formatDate } from '@/utils/formatDate'
 
 const props = defineProps<{
@@ -17,6 +19,11 @@ const date = computed(() => {
 <template>
   <router-link :to="'/posts/' + post.slug" class="post">
     <div class="post__title">{{ post.title }}</div>
+
+    <div class="tags">
+      <Tag :tag="tag" v-for="tag in post?.tags" :key="tag.id" />
+    </div>
+
     <div class="post__date">{{ date }}</div>
   </router-link>
 </template>
@@ -50,5 +57,11 @@ const date = computed(() => {
   margin-top: 10px;
   font-size: 12px;
   font-style: italic;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 </style>

@@ -20,7 +20,7 @@ defineProps<{
 
     <div v-if="bookmark.tags?.length">
       <div class="tags">
-        <div class="tag" v-for="tag in bookmark.tags" :key="tag.id">
+        <div v-for="tag in bookmark.tags" :key="tag.id">
           <Tag :tag="tag" />
         </div>
       </div>
@@ -48,13 +48,8 @@ defineProps<{
 }
 
 .tags {
-  margin-top: 15px;
-}
-
-.tags,
-.tag {
   display: flex;
-  gap: 5px;
+  gap: 10px;
   align-items: center;
 }
 </style>

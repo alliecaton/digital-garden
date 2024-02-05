@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Tag } from '@/types/Bookmarks'
+import type { Tag } from '@/types/Tags'
 
 defineProps<{
   tag: Tag
@@ -18,8 +18,8 @@ defineProps<{
   border-radius: 8px;
   padding: 3px 10px;
   font-size: 10px;
-  background-color: $faded;
-  color: $mid;
+  background-color: $purple-light;
+  color: $purple;
   width: fit-content;
   display: flex;
   gap: 5px;

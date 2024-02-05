@@ -57,6 +57,10 @@ onMounted(async () => {
 
 .books {
   margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .book__info {
@@ -68,10 +72,6 @@ onMounted(async () => {
   width: fit-content;
   display: flex;
   height: 100px;
-
-  & + & {
-    margin-top: 15px;
-  }
 }
 
 .book__img {

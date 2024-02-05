@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import type { Tag } from '@/types/Bookmarks'
+import type { Tag } from '@/types/Tags'
 
 import fetch from '@/utils/fetch'
 

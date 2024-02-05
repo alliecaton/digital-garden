@@ -6,7 +6,7 @@ import { useGetBookmarks } from '@/composables/useGetBookmarks'
 import fetch from '@/utils/fetch'
 
 import TagCreate from '@/components/TagCreate.vue'
-import type { Tag } from '@/types/Bookmarks'
+import type { Tag } from '@/types/Tags'
 
 const title = ref('')
 const description = ref('')

@@ -10,7 +10,7 @@ import CurrentlyReading from '@/components/CurrentlyReading.vue'
       <div class="text">
         <p>hello! welcome to my digital garden 🌱</p>
 
-        <p>this is my always-in-progress space to explore and experiment</p>
+        <p>this is my always-in-progress space to explore and experiment.</p>
 
         <div class="about">
           <p>

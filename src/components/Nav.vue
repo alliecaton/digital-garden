@@ -7,6 +7,12 @@ import { RouterLink } from 'vue-router'
     <RouterLink class="nav-link" to="/">home</RouterLink>
     <RouterLink class="nav-link" to="/posts">posts</RouterLink>
     <RouterLink class="nav-link" to="/bookmarks">bookmarks</RouterLink>
+    <a
+      href="http://localhost:3000/api/v1/rss"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Subscribe to RSS Feed</a
+    >
   </nav>
 </template>
 

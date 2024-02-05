@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Tag } from '@/types/Bookmarks'
+import type { Tag } from '@/types/Tags'
 
 defineProps<{
   tag: Tag

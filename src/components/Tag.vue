@@ -18,8 +18,8 @@ defineProps<{
   border-radius: 8px;
   padding: 3px 10px;
   font-size: 10px;
-  background-color: $faded;
-  color: $mid;
+  background-color: $purple-light;
+  color: $purple;
   width: fit-content;
   display: flex;
   gap: 5px;

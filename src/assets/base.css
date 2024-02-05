@@ -10,6 +10,8 @@
   --light: rgba(21, 225, 164, 0.678);
   --mid: rgb(29, 179, 134);
   --faded: rgb(29, 179, 134, 0.1);
+  --purple-light: #f0e9fd;
+  --purple: #7637ee;
 }
 
 *,

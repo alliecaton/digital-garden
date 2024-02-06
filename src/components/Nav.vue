@@ -35,6 +35,8 @@ const rssLink = computed(() => {
   justify-content: space-between;
   align-items: center;
   padding: 30px 30px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .nav-link {

@@ -77,6 +77,8 @@ onMounted(async () => {
 .book__img {
   height: 100%;
   border-radius: 4px;
+  // have to set a max width for safari & firefox. annoying
+  max-width: 70px;
 }
 
 .more {

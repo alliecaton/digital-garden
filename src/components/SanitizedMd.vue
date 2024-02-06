@@ -96,4 +96,10 @@ onMounted(async () => {
   background-color: #eef0f3;
   padding: 2px 4px;
 }
+
+:deep(blockquote) {
+  border-left: 4px solid #e0e2e5;
+  padding: 0 15px;
+  margin: 15px 0;
+}
 </style>

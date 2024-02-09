@@ -19,7 +19,7 @@ const truncatedList = computed(() => {
   <div v-else>
     <strong>most recent posts:</strong>
     <div class="post" v-for="post in truncatedList" :key="post.id">
-      <span>-></span>
+      <span class="arrow">-></span>
       <router-link class="post__link" :to="'/posts/' + post.slug">
         {{ post.title }}
       </router-link>
@@ -33,6 +33,10 @@ const truncatedList = computed(() => {
 .post {
   display: flex;
   gap: 10px;
+}
+
+.arrow {
+  text-wrap: nowrap;
 }
 
 .post__link {

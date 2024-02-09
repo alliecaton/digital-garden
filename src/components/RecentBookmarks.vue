@@ -51,7 +51,7 @@ const truncatedList = computed(() => {
 }
 
 .bookmark__arrow {
-  white-space: nowrap;
+  text-wrap: nowrap;
 }
 
 .more-link {

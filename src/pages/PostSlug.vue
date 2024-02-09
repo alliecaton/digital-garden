@@ -73,8 +73,8 @@ onMounted(async () => {
   }
 
   @include md {
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 25%;
+    padding-right: 25%;
   }
 }
 

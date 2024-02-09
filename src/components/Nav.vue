@@ -41,7 +41,7 @@ const rssLink = computed(() => {
 
 .nav-link {
   color: black;
-  font-size: 16px;
+  font-size: 18px;
   text-decoration: none;
 
   & + & {

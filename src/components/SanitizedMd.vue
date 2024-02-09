@@ -89,10 +89,13 @@ onMounted(async () => {
   border-radius: 4px;
   background-color: #eef0f3;
   padding: 16px;
+  font-size: 14px;
+  overflow-x: scroll;
 }
 
 :deep(code) {
   border-radius: 2px;
+  font-size: 14px;
   background-color: #eef0f3;
   padding: 2px 4px;
 }

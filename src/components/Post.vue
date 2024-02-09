@@ -61,7 +61,9 @@ const date = computed(() => {
 
 .tags {
   display: flex;
-  gap: 10px;
+  gap: 5px;
+  flex-wrap: wrap;
   align-items: center;
+  margin-top: 10px;
 }
 </style>

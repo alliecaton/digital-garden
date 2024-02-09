@@ -17,7 +17,7 @@ defineProps<{
 .tag {
   border-radius: 8px;
   padding: 3px 10px;
-  font-size: 10px;
+  font-size: 14px;
   background-color: $purple-light;
   color: $purple;
   width: fit-content;

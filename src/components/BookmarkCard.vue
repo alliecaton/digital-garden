@@ -35,12 +35,12 @@ defineProps<{
 
 .description {
   margin-top: 5px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .quote {
   margin: 10px 15px;
-  font-size: 12px;
+  font-size: 14px;
   font-style: italic;
   margin-left: 10px;
   border-left: 2px solid rgb(213, 213, 213);

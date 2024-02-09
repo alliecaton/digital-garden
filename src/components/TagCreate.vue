@@ -66,11 +66,11 @@ onMounted(async () => {
 .available-tags {
   display: flex;
   flex-wrap: wrap;
+  gap: 5px;
   margin-bottom: 10px;
 }
 
 .tag {
-  margin-top: 10px;
 }
 
 .tag__inputs {
@@ -104,10 +104,6 @@ onMounted(async () => {
 
   &:hover {
     outline: 1px solid black;
-  }
-
-  & + & {
-    margin-left: 10px;
   }
 }
 </style>

@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Sometype+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
 @font-face {
-  font-family: 'Quality Control';
-  src: url(/src/assets/fonts/Qualitycontrol.ttf);
+  font-family: 'FreePixel';
+  src: url(/src/assets/fonts/FreePixel.ttf);
 }
 
 /* color palette from <https://github.com/vuejs/theme> */
@@ -27,9 +28,9 @@ body {
   color: var(--base);
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
-  line-height: 1.6;
-  font-family: 'Sometype Mono', monospace;
-  font-size: 15px;
+  line-height: 1.4;
+  font-family: 'FreePixel';
+  font-size: 18px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

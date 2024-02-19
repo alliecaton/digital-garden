@@ -3,22 +3,28 @@ import fetch from '@/utils/fetch'
 
 import type { Post } from '@/types/Posts'
 import type { Pagination } from '@/types/Data'
+import type { Tag } from '@/types/Tags'
+
+import { useRouter } from 'vue-router'
 
 export function useGetPosts() {
   const loading = ref(true)
   const posts = ref<Post[]>([])
   const pagination = ref<Pagination>({} as Pagination)
 
-  const getPosts = async (
-    requestPage = 1,
-    filterTags?: number[] | null,
-    skipPagination?: boolean
-  ) => {
+  const router = useRouter()
+
+  const getPosts = async (requestPage = 1, filterTags?: Tag[] | null) => {
     loading.value = true
+
     let path = `/posts${requestPage ? `?page=${requestPage}` : ''}`
 
     // Add tags to filter by if they are passed
-    if (filterTags?.length) path += `&tags=${filterTags.join(',')}`
+    let tagNames = ''
+    if (filterTags?.length) {
+      tagNames = filterTags.map((tag) => tag.name).join(',')
+      path += `&tags=${tagNames}`
+    }
 
     try {
       const res = await fetch({
@@ -28,12 +34,16 @@ export function useGetPosts() {
 
       if (res) {
         pagination.value = res.pagination
-        if (!skipPagination) {
-          posts.value.push(...res.data)
-        } else {
-          posts.value = res.data
-        }
+        posts.value = res.data
       }
+
+      router.replace({
+        path: 'posts',
+        query: {
+          page: requestPage,
+          ...(filterTags?.length && { tags: tagNames }),
+        },
+      })
     } catch (e) {
       console.error(e)
     } finally {
@@ -41,27 +51,52 @@ export function useGetPosts() {
     }
   }
 
-  const tagIds = ref<number[]>([])
-  const filterPostsByTags = (tag: number | null, page?: number) => {
-    // This gets hit when paginating with filters selected
-    if (tag === null) return getPosts(page, tagIds.value)
+  // const tagIds = ref<number[]>([])
+  const selectedTags = ref<Tag[]>([])
+  const filterPostsByTags = (tag: Tag | null, page?: number) => {
+    const isTagSelected = selectedTags.value.find(
+      (selectedTag) => selectedTag.id === tag?.id
+    )
+
+    // this gets hit when paginating
+    if (tag === null) return getPosts(page, selectedTags.value)
 
     // If tag is already active, deselect it/unfilter
-    if (tagIds.value.includes(tag)) {
-      tagIds.value = tagIds.value.filter((id) => id !== tag)
+    if (isTagSelected) {
+      selectedTags.value = selectedTags.value.filter(
+        (selectedTag) => selectedTag.id !== tag.id
+      )
     } else {
-      tagIds.value.push(tag)
+      selectedTags.value.push(tag)
     }
 
     // If a new filter is selected, reset the page to 1
-    getPosts(1, tagIds.value, true)
+    getPosts(1, selectedTags.value)
+  }
+
+  const requestTagsOnMount = async (page: number, tagNames: string) => {
+    try {
+      const res = await fetch({
+        method: 'get',
+        path: `/tags?tagNames=${tagNames}`,
+      })
+
+      if (res) {
+        selectedTags.value = res
+      }
+    } catch (e) {
+      console.error(e)
+    } finally {
+      getPosts(page, selectedTags.value)
+    }
   }
 
   return {
     getPosts,
-    tagIds,
+    selectedTags,
     loading,
     filterPostsByTags,
+    requestTagsOnMount,
     posts,
     pagination,
   }

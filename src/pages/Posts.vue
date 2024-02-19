@@ -8,15 +8,32 @@ import Loader from '@/components/Loader.vue'
 import Pagination from '@/components/Pagination.vue'
 import TagFilters from '@/components/TagFilters.vue'
 
-const { posts, loading, getPosts, pagination, filterPostsByTags, tagIds } =
-  useGetPosts()
+import { useRoute } from 'vue-router'
+
+const {
+  posts,
+  loading,
+  getPosts,
+  pagination,
+  filterPostsByTags,
+  selectedTags,
+  requestTagsOnMount,
+} = useGetPosts()
+
+const route = useRoute()
 
 onMounted(() => {
-  getPosts(1)
+  const pageQuery = Number(route.query.page) || 1
+  const tagQuery = route.query.tags
+  if (tagQuery) {
+    requestTagsOnMount(pageQuery, String(tagQuery))
+  } else {
+    getPosts(pageQuery)
+  }
 })
 
 const paginate = (page: number) => {
-  if (tagIds.value?.length) {
+  if (selectedTags.value?.length) {
     filterPostsByTags(null, page)
   } else {
     getPosts(page)
@@ -26,7 +43,7 @@ const paginate = (page: number) => {
 
 <template>
   <div>
-    <TagFilters :appliedTags="tagIds" :onClick="filterPostsByTags" />
+    <TagFilters :appliedTags="selectedTags" :onClick="filterPostsByTags" />
   </div>
 
   <div>

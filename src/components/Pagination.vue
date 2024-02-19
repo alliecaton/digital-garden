@@ -14,17 +14,33 @@ const page = computed(() => {
 
 const changePage = (newPage: number) => {
   props.loadMore(newPage)
+
+  window.scrollTo({
+    top: 0,
+  })
 }
 
-const showLoadMore = computed(() => {
+const showNext = computed(() => {
   return Boolean(props.pagination.current !== props.pagination.totalPages)
+})
+
+const showPrevious = computed(() => {
+  return Boolean(props.pagination.current !== 1)
 })
 </script>
 
 <template>
-  <div class="pagination" v-if="pagination.totalResults > 10">
-    <button v-if="showLoadMore" class="load-more" @click="changePage(page + 1)">
-      load more
+  <div v-if="pagination.totalResults > 10" class="pagination">
+    <div class="page-text">page {{ page }} / {{ pagination.totalPages }}</div>
+    <button
+      v-if="showPrevious"
+      class="load-more"
+      @click="changePage(page + -1)"
+    >
+      &lt;&lt;
+    </button>
+    <button v-if="showNext" class="load-more" @click="changePage(page + 1)">
+      >>
     </button>
   </div>
 </template>
@@ -48,6 +64,12 @@ const showLoadMore = computed(() => {
 .pagination {
   margin: 20px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+}
+
+.page-text {
+  font-size: 12px;
 }
 </style>

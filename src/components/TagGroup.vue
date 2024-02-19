@@ -4,8 +4,8 @@ import { computed } from 'vue'
 
 const props = defineProps<{
   tags?: Tag[]
-  appliedTags?: number[]
-  onClick?: (tag: number) => void
+  appliedTags?: Tag[]
+  onClick?: (tag: Tag) => void
 }>()
 
 const isClickable = computed(() => {
@@ -18,12 +18,11 @@ const isClickable = computed(() => {
 
 const clickEvent = (tag: Tag) => {
   if (!props.onClick) return
-
-  props.onClick(tag.id)
+  props.onClick(tag)
 }
 
-const tagIsActive = (tag: number) => {
-  return Boolean(props.appliedTags?.includes(tag))
+const tagIsActive = (tag: Tag) => {
+  return Boolean(props.appliedTags?.some((t) => t.id === tag.id))
 }
 </script>
 
@@ -35,7 +34,7 @@ const tagIsActive = (tag: number) => {
           :is="isClickable ? 'button' : 'div'"
           @[isClickable]="() => clickEvent(tag)"
           class="tag"
-          :class="{ 'tag--active': tagIsActive(tag.id) }"
+          :class="{ 'tag--active': tagIsActive(tag) }"
         >
           <span>{{ tag.emoji }}</span>
           <span>{{ tag.name }}</span>

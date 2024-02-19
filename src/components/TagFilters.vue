@@ -4,12 +4,13 @@ import { onMounted } from 'vue'
 import { useTags } from '@/composables/useTags'
 
 import TagGroup from '@/components/TagGroup.vue'
+import type { Tag } from '@/types/Tags'
 
 const { availableTags, getAllPostTags } = useTags()
 
 defineProps<{
-  onClick: (tag: number) => void
-  appliedTags: number[]
+  onClick: (tag: Tag) => void
+  appliedTags: Tag[]
 }>()
 
 onMounted(async () => {

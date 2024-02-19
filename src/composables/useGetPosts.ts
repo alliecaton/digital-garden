@@ -14,7 +14,11 @@ export function useGetPosts() {
 
   const router = useRouter()
 
-  const getPosts = async (requestPage = 1, filterTags?: Tag[] | null) => {
+  const getPosts = async (
+    requestPage = 1,
+    filterTags?: Tag[] | null,
+    skipPagination?: boolean
+  ) => {
     loading.value = true
 
     let path = `/posts${requestPage ? `?page=${requestPage}` : ''}`
@@ -37,13 +41,15 @@ export function useGetPosts() {
         posts.value = res.data
       }
 
-      router.replace({
-        path: 'posts',
-        query: {
-          page: requestPage,
-          ...(filterTags?.length && { tags: tagNames }),
-        },
-      })
+      if (!skipPagination) {
+        router.replace({
+          path: 'posts',
+          query: {
+            page: requestPage,
+            ...(filterTags?.length && { tags: tagNames }),
+          },
+        })
+      }
     } catch (e) {
       console.error(e)
     } finally {

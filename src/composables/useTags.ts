@@ -58,9 +58,25 @@ export function useTags() {
     }
   }
 
+  const getAllPostTags = async () => {
+    try {
+      const res = await fetch({
+        method: 'get',
+        path: '/post-tags',
+      })
+
+      if (res) {
+        availableTags.value = res
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   return {
     emoji,
     name,
+    getAllPostTags,
     tags,
     addTagToList,
     showTagInputs,

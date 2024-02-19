@@ -5,7 +5,7 @@ import { useTags } from '@/composables/useTags'
 
 import TagGroup from '@/components/TagGroup.vue'
 
-const { availableTags, getAllTags } = useTags()
+const { availableTags, getAllPostTags } = useTags()
 
 defineProps<{
   onClick: (tag: number) => void
@@ -13,7 +13,7 @@ defineProps<{
 }>()
 
 onMounted(async () => {
-  await getAllTags()
+  await getAllPostTags()
 })
 </script>
 

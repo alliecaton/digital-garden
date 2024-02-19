@@ -15,9 +15,9 @@ export function useGetPosts() {
   const router = useRouter()
 
   const getPosts = async (
-    requestPage = 1,
+    requestPage?: number,
     filterTags?: Tag[] | null,
-    skipPagination?: boolean
+    setQueryParams?: boolean
   ) => {
     loading.value = true
 
@@ -41,7 +41,7 @@ export function useGetPosts() {
         posts.value = res.data
       }
 
-      if (!skipPagination) {
+      if (setQueryParams) {
         router.replace({
           path: 'posts',
           query: {
@@ -65,7 +65,7 @@ export function useGetPosts() {
     )
 
     // this gets hit when paginating
-    if (tag === null) return getPosts(page, selectedTags.value)
+    if (tag === null) return getPosts(page, selectedTags.value, true)
 
     // If tag is already active, deselect it/unfilter
     if (isTagSelected) {
@@ -77,7 +77,7 @@ export function useGetPosts() {
     }
 
     // If a new filter is selected, reset the page to 1
-    getPosts(1, selectedTags.value)
+    getPosts(1, selectedTags.value, true)
   }
 
   const requestTagsOnMount = async (page: number, tagNames: string) => {
@@ -93,7 +93,7 @@ export function useGetPosts() {
     } catch (e) {
       console.error(e)
     } finally {
-      getPosts(page, selectedTags.value)
+      getPosts(page, selectedTags.value, true)
     }
   }
 

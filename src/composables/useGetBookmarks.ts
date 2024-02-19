@@ -9,7 +9,7 @@ export function useGetBookmarks() {
   const bookmarks = ref<Bookmark[]>([])
   const pagination = ref<Pagination>({} as Pagination)
 
-  const getBookmarks = async (requestPage?: number) => {
+  const getBookmarks = async (requestPage: number = 1) => {
     loading.value = true
 
     const path = `/bookmarks${requestPage ? `?page=${requestPage}` : ''}`
@@ -23,11 +23,7 @@ export function useGetBookmarks() {
       if (res?.data) {
         pagination.value = res.pagination
 
-        if (bookmarks.value.length) {
-          bookmarks.value.push(...res.data)
-        } else {
-          bookmarks.value = res.data
-        }
+        bookmarks.value = res.data
       }
     } catch (e) {
       console.error(e)

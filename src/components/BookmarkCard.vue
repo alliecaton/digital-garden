@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Bookmark } from '@/types/Bookmarks'
 
-import Tag from '@/components/Tag.vue'
+import TagGroup from '@/components/TagGroup.vue'
 
 defineProps<{
   bookmark: Bookmark
@@ -18,13 +18,7 @@ defineProps<{
 
     <div class="quote">{{ bookmark.quote }}</div>
 
-    <div v-if="bookmark.tags?.length">
-      <div class="tags">
-        <div v-for="tag in bookmark.tags" :key="tag.id">
-          <Tag :tag="tag" />
-        </div>
-      </div>
-    </div>
+    <TagGroup :tags="bookmark.tags" />
   </div>
 </template>
 
@@ -45,11 +39,5 @@ defineProps<{
   margin-left: 10px;
   border-left: 2px solid rgb(213, 213, 213);
   padding-left: 10px;
-}
-
-.tags {
-  display: flex;
-  gap: 10px;
-  align-items: center;
 }
 </style>

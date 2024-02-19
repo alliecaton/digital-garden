@@ -45,6 +45,14 @@ import CurrentlyReading from '@/components/CurrentlyReading.vue'
               >linkedin</a
             >.
           </p>
+
+          <p class="spacedp">
+            If you want to chat (or if you encounter a bug 🐞) feel free to
+            <a target="blank" href="mailto:alliecaton3@gmail.com"
+              >reach out to me by email</a
+            >
+            :)
+          </p>
         </div>
       </div>
       <div class="recents">

@@ -1,6 +1,10 @@
 <template>
   <footer class="links-container">
     <div>
+      ✉️ email:
+      <a href="mailto:alliecaton3@gmail.com">alliecaton3@gmail.com</a>
+      <br />
+      <br />
       <div>🔗 personal links:</div>
       <div class="links">
         <a class="link" href="https://github.com/alliecaton" target="blank"
@@ -49,7 +53,7 @@
   justify-content: center;
   text-align: center;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 15px;
   border-radius: 4px;
 }

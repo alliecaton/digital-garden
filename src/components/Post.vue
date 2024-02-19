@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import type { Post } from '@/types/Posts'
 
-import Tag from '@/components/Tag.vue'
+import TagGroup from '@/components/TagGroup.vue'
 
 import { formatDate } from '@/utils/formatDate'
 
@@ -20,9 +20,7 @@ const date = computed(() => {
   <router-link :to="'/posts/' + post.slug" class="post">
     <div class="post__title">{{ post.title }}</div>
 
-    <div class="tags">
-      <Tag :tag="tag" v-for="tag in post?.tags" :key="tag.id" />
-    </div>
+    <TagGroup :tags="post.tags || []" />
 
     <div class="post__date">{{ date }}</div>
   </router-link>
@@ -57,13 +55,5 @@ const date = computed(() => {
   margin-top: 10px;
   font-size: 12px;
   font-style: italic;
-}
-
-.tags {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 10px;
 }
 </style>

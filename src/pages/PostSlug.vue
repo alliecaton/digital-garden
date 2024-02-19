@@ -10,7 +10,7 @@ import { formatDate } from '@/utils/formatDate'
 import Loader from '@/components/Loader.vue'
 import Sanitized from '@/components/SanitizedMd.vue'
 
-import Tag from '@/components/Tag.vue'
+import TagGroup from '@/components/TagGroup.vue'
 
 const route = useRoute()
 
@@ -49,9 +49,7 @@ onMounted(async () => {
   <div v-if="!loading" class="container constraint">
     <div class="post__title">{{ post?.title }}</div>
 
-    <div class="tags">
-      <Tag :tag="tag" v-for="tag in post?.tags" :key="tag.id" />
-    </div>
+    <TagGroup :tags="post?.tags || []" />
 
     <div class="post__date">{{ date }}</div>
 

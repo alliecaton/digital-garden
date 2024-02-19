@@ -5,6 +5,7 @@ type Config = {
   path: string
   data?: any
   headers?: any
+  params?: any
 }
 
 export default async function fetch({ method, path, data, headers }: Config) {

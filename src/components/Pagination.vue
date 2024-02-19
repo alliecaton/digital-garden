@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 
 import type { Pagination } from '@/types/Data'
 
@@ -8,22 +8,22 @@ const props = defineProps<{
   loadMore: (page: number) => void
 }>()
 
-const page = ref(1)
+const page = computed(() => {
+  return props.pagination.current || 1
+})
 
 const changePage = (newPage: number) => {
-  page.value = newPage
-
-  props.loadMore(page.value)
+  props.loadMore(newPage)
 }
+
+const showLoadMore = computed(() => {
+  return Boolean(props.pagination.current !== props.pagination.totalPages)
+})
 </script>
 
 <template>
   <div class="pagination" v-if="pagination.totalResults > 10">
-    <button
-      v-if="page !== pagination.totalPages"
-      class="load-more"
-      @click="changePage(page + 1)"
-    >
+    <button v-if="showLoadMore" class="load-more" @click="changePage(page + 1)">
       load more
     </button>
   </div>

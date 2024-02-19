@@ -112,26 +112,6 @@ const deletePost = async (post: Post) => {
   }
 }
 
-// const loadingPosts = ref(true)
-// const posts = ref<Post[]>([])
-// const getPosts = async () => {
-//   loadingPosts.value = true
-//   try {
-//     const data = await fetch({
-//       method: 'get',
-//       path: '/posts',
-//     })
-
-//     if (data) {
-//       posts.value = data
-//     }
-//   } catch (e) {
-//     console.error(e)
-//   } finally {
-//     loadingPosts.value = false
-//   }
-// }
-
 onMounted(() => {
   getPosts()
 })

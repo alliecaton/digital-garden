@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 
 import { useTags } from '@/composables/useTags'
 
@@ -13,6 +13,20 @@ defineProps<{
   appliedTags: Tag[]
 }>()
 
+const filtersVisible = ref(false)
+
+const toggleFilters = () => {
+  filtersVisible.value = !filtersVisible.value
+}
+
+const filterTitle = computed(() => {
+  if (filtersVisible.value) {
+    return 'hide filters'
+  }
+
+  return 'show filters'
+})
+
 onMounted(async () => {
   await getAllPostTags()
 })
@@ -20,12 +34,21 @@ onMounted(async () => {
 
 <template>
   <div class="filters-container">
-    <p class="filter-title">filter by tag &lt;3</p>
-    <TagGroup
-      :appliedTags="appliedTags"
-      :onClick="onClick"
-      :tags="availableTags"
-    />
+    <div class="title-container">
+      <div @click="toggleFilters" class="filter-title">{{ filterTitle }}</div>
+      <div class="filter-length">
+        you have {{ appliedTags?.length }} filter(s) selected
+      </div>
+    </div>
+    <KeepAlive>
+      <TagGroup
+        v-if="filtersVisible"
+        :appliedTags="appliedTags"
+        :onClick="onClick"
+        :tags="availableTags"
+        variant="sm"
+      />
+    </KeepAlive>
   </div>
 </template>
 
@@ -38,8 +61,25 @@ onMounted(async () => {
   padding: 15px 20px;
 }
 
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .filter-title {
   line-height: 1;
-  font-size: 14px;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: underline;
+  color: $base;
+
+  &:hover {
+    text-decoration: underline dotted;
+  }
+}
+
+.filter-length {
+  font-size: 12px;
 }
 </style>

@@ -6,6 +6,7 @@ const props = defineProps<{
   tags?: Tag[]
   appliedTags?: Tag[]
   onClick?: (tag: Tag) => void
+  variant?: 'lg' | 'sm'
 }>()
 
 const isClickable = computed(() => {
@@ -34,7 +35,11 @@ const tagIsActive = (tag: Tag) => {
           :is="isClickable ? 'button' : 'div'"
           @[isClickable]="() => clickEvent(tag)"
           class="tag"
-          :class="{ 'tag--active': tagIsActive(tag) }"
+          :class="{
+            'tag--active': tagIsActive(tag),
+            'tag--lg': variant === 'lg' || !variant,
+            'tag--sm': variant === 'sm',
+          }"
         >
           <span>{{ tag.emoji }}</span>
           <span>{{ tag.name }}</span>
@@ -65,16 +70,25 @@ button {
   }
 }
 
+.tag--lg {
+  font-size: 14px;
+  padding: 8px 10px;
+}
+
+.tag--sm {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
 .tag {
   border-radius: 8px;
-  padding: 3px 10px;
-  font-size: 14px;
   background-color: $purple-light;
   color: $purple;
   width: fit-content;
   display: flex;
+  line-height: 1;
   gap: 5px;
-  align-items: center;
+  align-items: end;
 }
 
 .tag--active {

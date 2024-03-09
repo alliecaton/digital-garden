@@ -2,6 +2,7 @@
 import RecentPosts from '@/components/RecentPosts.vue'
 import RecentBookmarks from '@/components/RecentBookmarks.vue'
 import CurrentlyReading from '@/components/CurrentlyReading.vue'
+import CurrentlyListening from '@/components/CurrentlyListening.vue'
 </script>
 
 <template>
@@ -61,7 +62,10 @@ import CurrentlyReading from '@/components/CurrentlyReading.vue'
       </div>
     </div>
 
-    <CurrentlyReading />
+    <div class="media">
+      <CurrentlyReading />
+      <CurrentlyListening />
+    </div>
   </div>
 </template>
 
@@ -103,5 +107,21 @@ import CurrentlyReading from '@/components/CurrentlyReading.vue'
 
 .bookmarks {
   margin-top: 30px;
+}
+
+.media {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column;
+  gap: 30px;
+  flex-wrap: wrap;
+
+  & > * {
+    flex: 1;
+  }
+
+  @include md {
+    flex-direction: row;
+  }
 }
 </style>

@@ -31,14 +31,14 @@ onMounted(async () => {
 
 <template>
   <div class="spacing">
-    <strong>currently reading:</strong>
+    <div class="header">currently reading:</div>
     <Loader v-if="loading" />
     <div v-else class="books">
       <div class="book" v-for="book in books" :key="book.title">
         <a :href="book.link"> <img class="book__img" :src="book.img" /></a>
         <div class="book__info">
-          <a :href="book.link">{{ book.title }}</a>
-          <div>{{ book.author }}</div>
+          <a :href="book.link" class="clamp book__title">{{ book.title }}</a>
+          <div class="clamp">{{ book.author }}</div>
         </div>
       </div>
     </div>
@@ -51,8 +51,16 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 .spacing {
-  margin-top: 30px;
-  display: block;
+  padding: 15px;
+  border: 2px dashed $purple;
+  background-color: $purple-light;
+  align-self: start;
+  border-radius: 4px;
+}
+
+.header {
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .books {
@@ -66,6 +74,17 @@ onMounted(async () => {
 .book__info {
   padding: 15px;
   align-self: center;
+}
+
+.book__title {
+  color: $purple;
+}
+
+.clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .book {
@@ -84,5 +103,7 @@ onMounted(async () => {
 .more {
   display: block;
   margin-top: 15px;
+  font-size: 14px;
+  color: $base;
 }
 </style>

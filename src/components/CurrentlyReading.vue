@@ -22,7 +22,7 @@ onMounted(async () => {
       books.value = res.books
     }
   } catch (e) {
-    console.log(e)
+    console.error(e)
   }
 
   loading.value = false
@@ -51,6 +51,7 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 .spacing {
+  width: 100%;
   padding: 15px;
   border: 2px dashed $purple;
   background-color: $purple-light;

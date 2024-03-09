@@ -16,7 +16,7 @@ onMounted(async () => {
   loading.value = true
 
   const key = import.meta.env.VITE_LASTFM_API
-  const path = `http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=allieeecaton&api_key=${key}&format=json&period=7day&limit=10`
+  const path = `https://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=allieeecaton&api_key=${key}&format=json&period=7day&limit=10`
 
   try {
     const res = await axios({
@@ -34,7 +34,7 @@ onMounted(async () => {
       })
     }
   } catch (e) {
-    console.log(e)
+    console.error(e)
   } finally {
     loading.value = false
   }
@@ -60,6 +60,7 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 .spacing {
+  width: 100%;
   padding: 15px;
   border-radius: 4px;
   align-self: start;

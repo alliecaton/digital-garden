@@ -27,7 +27,7 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
               href="https://app.thestorygraph.com/profile/allieeeee"
               >read</a
             >, <a target="blank" href="https://github.com/alliecaton">code</a>,
-            boulder, play video games, make things with my hands, and engage
+            boulder, listen to fast music, make things with my hands, and engage
             with my community.
           </p>
 

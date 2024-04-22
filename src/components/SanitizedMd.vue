@@ -50,7 +50,12 @@ onMounted(async () => {
       }
     })
 
-    sanitized.value = DOMPurify.sanitize(mark)
+    const allowedTags = {
+      ADD_TAGS: ['iframe'],
+      ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'],
+    }
+
+    sanitized.value = DOMPurify.sanitize(mark, allowedTags)
   }
 })
 </script>

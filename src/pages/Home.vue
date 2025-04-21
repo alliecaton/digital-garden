@@ -11,38 +11,35 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
       <div class="text">
         <p>hello! welcome to my digital garden 🌱</p>
 
-        <p>this is my always-in-progress space to explore and experiment.</p>
-
         <div class="about">
-          <p>
-            my name is allie and i'm a full stack software engineer based in san
-            diego, ca.
-          </p>
+          <p>my name is allie and i'm a software engineer based in socal.</p>
 
           <p class="spacedp">
             i have a lot of hobbies and like the idea of using this garden to
             catalog some of them. most notably, i love to
             <a
-              target="blank"
+              target="_blank"
               href="https://app.thestorygraph.com/profile/allieeeee"
               >read</a
-            >, <a target="blank" href="https://github.com/alliecaton">code</a>,
-            boulder, listen to fast music, make things with my hands, and engage
-            with my community.
+            >, <a target="_blank" href="https://github.com/alliecaton">code</a>,
+            boulder,
+            <a target="_blank" href="https://bandcamp.com/alliecaton"
+              >listen to fast music</a
+            >, make things with my hands, and engage with my community.
           </p>
 
           <p class="spacedp">
-            check me out on
-            <a class="link" href="https://github.com/alliecaton" target="blank"
+            connect with me on
+            <a class="link" href="https://github.com/alliecaton" target="_blank"
               >github</a
             >,
-            <a class="link" href="https://alliecaton.com" target="blank"
+            <a class="link" href="https://alliecaton.com" target="_blank"
               >my portfolio</a
-            >, and
+            >, or
             <a
               class="link"
               href="https://www.linkedin.com/in/alliecaton/"
-              target="blank"
+              target="_blank"
               >linkedin</a
             >.
           </p>
@@ -71,7 +68,7 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
 
 <style scoped lang="scss">
 .about {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .intro {

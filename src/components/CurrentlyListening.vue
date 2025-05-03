@@ -31,7 +31,7 @@ onMounted(async () => {
           name: artist.name,
           url: artist.url,
         }
-      })
+      }).slice(0, 5)
     }
   } catch (e) {
     console.error(e)

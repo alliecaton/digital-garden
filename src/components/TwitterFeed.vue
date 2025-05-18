@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="ts">
+// @ts-nocheck
 import { onMounted, ref } from 'vue';
 import Loader from '@/components/Loader.vue';
 

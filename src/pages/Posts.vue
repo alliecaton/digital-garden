@@ -42,9 +42,7 @@ const paginate = (page: number) => {
 </script>
 
 <template>
-  <div>
-    <TagFilters :appliedTags="selectedTags" :onClick="filterPostsByTags" />
-  </div>
+  <TagFilters :appliedTags="selectedTags" :onClick="filterPostsByTags" />
 
   <div>
     <div class="posts" v-for="post in posts" :key="post.id">

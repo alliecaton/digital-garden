@@ -57,7 +57,6 @@ export function useGetPosts() {
     }
   }
 
-  // const tagIds = ref<number[]>([])
   const selectedTags = ref<Tag[]>([])
   const filterPostsByTags = (tag: Tag | null, page?: number) => {
     const isTagSelected = selectedTags.value.find(

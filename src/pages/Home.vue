@@ -44,18 +44,17 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
       </div>
     </div>
 
-    <div class="section">
+    <div class="section sub-section">
+      <div class="section twit">
+        <TwitterFeed />
+      </div>
       <div>
-        <div class="sub-section">
+        <div>
           <CurrentlyReading />
         </div>
         <div class="sub-section">
           <CurrentlyListening />
         </div>
-      </div>
-
-      <div class="section sub-section">
-        <TwitterFeed />
       </div>
     </div>
   </div>
@@ -89,7 +88,7 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
 .section {
   display: flex;
   gap: 30px;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   align-self: stretch;
 
   & > * {
@@ -99,6 +98,13 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
   @include md {
     flex-direction: row;
     gap: 50px;
+  }
+}
+
+.twit {
+  @include md {
+    max-width: 100%;
+    margin-top: 0px;
   }
 }
 

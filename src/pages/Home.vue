@@ -3,16 +3,17 @@ import RecentPosts from '@/components/RecentPosts.vue'
 import RecentBookmarks from '@/components/RecentBookmarks.vue'
 import CurrentlyReading from '@/components/CurrentlyReading.vue'
 import CurrentlyListening from '@/components/CurrentlyListening.vue'
+import TwitterFeed from '@/components/TwitterFeed.vue'
 </script>
 
 <template>
   <div class="container">
-    <div class="intro">
+    <div class="section">
       <div class="text">
         <p>hello! welcome to my digital garden 🌱</p>
 
         <div class="about">
-          <p>my name is allie and i'm a software engineer based in socal.</p>
+          <p>my name is allie and i'm a software engineer based in SoCal.</p>
 
           <p class="spacedp">
             i have a lot of hobbies and like the idea of using this garden to
@@ -26,22 +27,6 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
             <a target="_blank" href="https://bandcamp.com/alliecaton"
               >listen to fast music</a
             >, make things with my hands, and engage with my community.
-          </p>
-
-          <p class="spacedp">
-            connect with me on
-            <a class="link" href="https://github.com/alliecaton" target="_blank"
-              >github</a
-            >,
-            <a class="link" href="https://alliecaton.com" target="_blank"
-              >my portfolio</a
-            >, or
-            <a
-              class="link"
-              href="https://www.linkedin.com/in/alliecaton/"
-              target="_blank"
-              >linkedin</a
-            >.
           </p>
 
           <p class="spacedp">
@@ -59,9 +44,19 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
       </div>
     </div>
 
-    <div class="media">
-      <CurrentlyReading />
-      <CurrentlyListening />
+    <div class="section">
+      <div>
+        <div class="sub-section">
+          <CurrentlyReading />
+        </div>
+        <div class="sub-section">
+          <CurrentlyListening />
+        </div>
+      </div>
+
+      <div class="section sub-section">
+        <TwitterFeed />
+      </div>
     </div>
   </div>
 </template>
@@ -71,18 +66,8 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
   margin-top: 10px;
 }
 
-.intro {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-
-  @include md {
-    gap: 50px;
-  }
-}
-
-.intro > * {
-  flex: 1;
+.recents {
+  padding: 30px;
 }
 
 .text {
@@ -90,12 +75,7 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
   border-radius: 4px;
   border: 2px solid $light;
   background-color: $faded;
-  min-width: unset;
-  align-self: start;
-
-  @include sm {
-    min-width: 300px;
-  }
+  align-self: stretch;
 }
 
 .spacedp {
@@ -106,12 +86,11 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
   margin-top: 30px;
 }
 
-.media {
+.section {
   display: flex;
-  margin-top: 30px;
-  flex-direction: column;
   gap: 30px;
   flex-wrap: wrap;
+  align-self: stretch;
 
   & > * {
     flex: 1;
@@ -119,6 +98,11 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
 
   @include md {
     flex-direction: row;
+    gap: 50px;
   }
+}
+
+.sub-section {
+  margin-top: 30px;
 }
 </style>

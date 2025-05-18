@@ -1,47 +1,48 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+// import { ref, onMounted } from 'vue'
 
-import type { Book } from '@/types/Books'
+// import type { Book } from '@/types/Books'
 
-import fetch from '@/utils/fetch'
+// // import fetch from '@/utils/fetch'
 
-import Loader from '@/components/Loader.vue'
+// // import Loader from '@/components/Loader.vue'
 
-const loading = ref(true)
+// // const loading = ref(true)
 
-const books = ref<Book[]>([])
+// // const books = ref<Book[]>([])
 
-onMounted(async () => {
-  try {
-    const res = await fetch({
-      method: 'get',
-      path: '/current-book',
-    })
+// onMounted(async () => {
+//   try {
+//     const res = await fetch({
+//       method: 'get',
+//       path: '/current-book',
+//     })
 
-    if (res?.books) {
-      books.value = res.books
-    }
-  } catch (e) {
-    console.error(e)
-  }
+//     if (res?.books) {
+//       books.value = res.books
+//     }
+//   } catch (e) {
+//     console.error(e)
+//   }
 
-  loading.value = false
-})
+//   loading.value = false
+// })
 </script>
 
 <template>
   <div class="spacing">
     <div class="header">currently reading:</div>
-    <Loader v-if="loading" />
-    <div v-else class="books">
+    <!-- <Loader v-if="loading" /> -->
+    <!-- <div v-else class="books">
       <div class="book" v-for="book in books" :key="book.title">
         <a :href="book.link"> <img class="book__img" :src="book.img" /></a>
         <div class="book__info">
           <a :href="book.link" class="clamp book__title">{{ book.title }}</a>
           <div class="clamp">{{ book.author }}</div>
         </div>
-      </div>
-    </div>
+      </div> -->
+      <em>this section is under construction, storygraph caught onto my scraping :/</em>
+    <!-- </div> -->
 
     <a class="more" href="https://app.thestorygraph.com/profile/allieeeee"
       >see more books</a

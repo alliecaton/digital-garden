@@ -29,22 +29,6 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
           </p>
 
           <p class="spacedp">
-            connect with me on
-            <a class="link" href="https://github.com/alliecaton" target="_blank"
-              >github</a
-            >,
-            <a class="link" href="https://alliecaton.com" target="_blank"
-              >my portfolio</a
-            >, or
-            <a
-              class="link"
-              href="https://www.linkedin.com/in/alliecaton/"
-              target="_blank"
-              >linkedin</a
-            >.
-          </p>
-
-          <p class="spacedp">
             if you want to chat (or if you encounter a bug 🐞) feel free to
             <a target="blank" href="mailto:alliecaton3@gmail.com"
               >reach out to me by email</a

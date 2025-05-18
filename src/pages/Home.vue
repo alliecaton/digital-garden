@@ -8,7 +8,7 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
 
 <template>
   <div class="container">
-    <div class="section">
+    <div class="section top">
       <div class="text">
         <p>hello! welcome to my digital garden 🌱</p>
 
@@ -44,7 +44,7 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
       </div>
     </div>
 
-    <div class="section sub-section">
+    <div class="section sub-section bottom">
       <div class="section twit">
         <TwitterFeed />
       </div>
@@ -85,10 +85,25 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
   margin-top: 30px;
 }
 
+.top {
+  flex-direction: column;
+
+  @include md {
+    flex-direction: row;
+  }
+}
+
+.bottom {
+  flex-direction: column-reverse;
+
+  @include md {
+    flex-direction: row;
+  }
+}
+
 .section {
   display: flex;
   gap: 30px;
-  flex-wrap: wrap-reverse;
   align-self: stretch;
 
   & > * {

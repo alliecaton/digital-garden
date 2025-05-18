@@ -41,6 +41,7 @@ onMounted(() => {
     <a 
       class="twitter-timeline"
       data-height="500"
+      data-width="100%"
       href="https://twitter.com/whale_m0m?ref_src=twsrc%5Etfw"
     >
       <Loader />

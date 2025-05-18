@@ -39,7 +39,7 @@ onMounted(() => {
   <div>
     <a 
       class="twitter-timeline"
-      data-height="800"
+      data-height="500"
       href="https://twitter.com/whale_m0m?ref_src=twsrc%5Etfw"
     >
       <Loader />

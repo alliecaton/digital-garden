@@ -30,22 +30,6 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
           </p>
 
           <p class="spacedp">
-            connect with me on
-            <a class="link" href="https://github.com/alliecaton" target="_blank"
-              >github</a
-            >,
-            <a class="link" href="https://alliecaton.com" target="_blank"
-              >my portfolio</a
-            >, or
-            <a
-              class="link"
-              href="https://www.linkedin.com/in/alliecaton/"
-              target="_blank"
-              >linkedin</a
-            >.
-          </p>
-
-          <p class="spacedp">
             if you want to chat (or if you encounter a bug 🐞) feel free to
             <a target="blank" href="mailto:alliecaton3@gmail.com"
               >reach out to me by email</a
@@ -60,14 +44,19 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
       </div>
     </div>
 
-    <div class="section sub-section">
-      <CurrentlyReading />
-      <CurrentlyListening />
-    </div>
+    <div class="section">
+      <div>
+        <div class="sub-section">
+          <CurrentlyReading />
+        </div>
+        <div class="sub-section">
+          <CurrentlyListening />
+        </div>
+      </div>
 
-    <div class="section sub-section">
-      <div>something else</div>
-      <TwitterFeed />
+      <div class="section sub-section">
+        <TwitterFeed />
+      </div>
     </div>
   </div>
 </template>
@@ -99,7 +88,6 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
 
 .section {
   display: flex;
-  flex-direction: column;
   gap: 30px;
   flex-wrap: wrap;
   align-self: stretch;

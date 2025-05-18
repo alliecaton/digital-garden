@@ -39,15 +39,6 @@ const truncatedList = computed(() => {
 
 .bookmark__link {
   color: $base;
-  white-space: nowrap;
-  overflow: hidden;
-  display: block;
-  text-overflow: ellipsis;
-  max-width: 200px;
-
-  @include sm {
-    max-width: 420px;
-  }
 }
 
 .bookmark__arrow {

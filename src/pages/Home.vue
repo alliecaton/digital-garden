@@ -44,19 +44,14 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
       </div>
     </div>
 
-    <div class="section sub-section bottom">
-      <div class="section twit">
-        <TwitterFeed />
-      </div>
-      <div>
-        <div>
-          <CurrentlyReading />
-        </div>
-        <div class="sub-section">
-          <CurrentlyListening />
-        </div>
-      </div>
+    <div class="section">
+      <div class="sub-section">
+      <CurrentlyReading />
     </div>
+          <div class="sub-section">
+        <CurrentlyListening />
+      </div>
+      </div>
   </div>
 </template>
 
@@ -116,12 +111,6 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
   }
 }
 
-.twit {
-  @include md {
-    max-width: 100%;
-    margin-top: 0px;
-  }
-}
 
 .sub-section {
   margin-top: 30px;

@@ -3,13 +3,13 @@
 
 // import type { Book } from '@/types/Books'
 
-// // import fetch from '@/utils/fetch'
+// import fetch from '@/utils/fetch'
 
-// // import Loader from '@/components/Loader.vue'
+// import Loader from '@/components/Loader.vue'
 
-// // const loading = ref(true)
+// const loading = ref(true)
 
-// // const books = ref<Book[]>([])
+// const books = ref<Book[]>([])
 
 // onMounted(async () => {
 //   try {
@@ -40,9 +40,10 @@
           <a :href="book.link" class="clamp book__title">{{ book.title }}</a>
           <div class="clamp">{{ book.author }}</div>
         </div>
-      </div> -->
-      <em>this section is under construction, storygraph caught onto my scraping :/</em>
-    <!-- </div> -->
+      </div>
+    </div> -->
+
+    <em>this section is under construction, storygraph caught onto my scraping :/</em>
 
     <a class="more" href="https://app.thestorygraph.com/profile/allieeeee"
       >see more books</a

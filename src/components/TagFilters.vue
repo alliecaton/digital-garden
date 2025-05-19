@@ -6,11 +6,12 @@ import { useTags } from '@/composables/useTags'
 import TagGroup from '@/components/TagGroup.vue'
 import type { Tag } from '@/types/Tags'
 
-const { availableTags, getAllPostTags } = useTags()
+const { availableTags, getAllPostTags, getAllBookmarkTags } = useTags()
 
-defineProps<{
+const props = defineProps<{
   onClick: (tag: Tag) => void
   appliedTags: Tag[]
+  pageType: 'bookmarks' | 'posts'
 }>()
 
 const filtersVisible = ref(false)
@@ -28,7 +29,13 @@ const filterTitle = computed(() => {
 })
 
 onMounted(async () => {
-  await getAllPostTags()
+  if (props.pageType === 'posts') {
+    return await getAllPostTags()
+  }
+
+  if (props.pageType === 'bookmarks') {
+    return await getAllBookmarkTags()
+  }
 })
 </script>
 

@@ -43,7 +43,11 @@ const paginate = (page: number) => {
 </script>
 
 <template>
-  <TagFilters :appliedTags="selectedTags" :onClick="filterBookmarksByTags" />
+  <TagFilters
+    :appliedTags="selectedTags"
+    pageType="bookmarks"
+    :onClick="filterBookmarksByTags"
+  />
   <div class="container">
     <div class="bookmark" v-for="bookmark in bookmarks" :key="bookmark.id">
       <BookmarkCard :bookmark="bookmark" />

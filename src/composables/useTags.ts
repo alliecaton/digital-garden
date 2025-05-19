@@ -73,6 +73,21 @@ export function useTags() {
     }
   }
 
+  const getAllBookmarkTags = async () => {
+    try {
+      const res = await fetch({
+        method: 'get',
+        path: '/bookmark-tags',
+      })
+
+      if (res) {
+        availableTags.value = res
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   return {
     emoji,
     name,
@@ -83,6 +98,7 @@ export function useTags() {
     showEmptyTagInputs,
     removeTagFromList,
     availableTags,
+    getAllBookmarkTags,
     getAllTags,
   }
 }

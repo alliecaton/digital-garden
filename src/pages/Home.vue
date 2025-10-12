@@ -30,9 +30,11 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
 
           <p class="spacedp">
             the url of this site is a tag that i've used forever for various
-            accounts, and is a nod to the whales that I've "adopted" through
-            <a href="whales.org">whales.org</a> -- something I've been doing
-            since i was a kid. my current whale daughter is
+            accounts, and is a nod to the
+            <a href="https://adopt-us.whales.org/whale-adoption-project/"
+              >whales that I've "adopted"</a
+            >, something I've been doing since i was a kid. my current whale
+            daughter is
             <a href="https://www.whaleswithnames.com/mars/">Mars</a> 🐋
           </p>
 

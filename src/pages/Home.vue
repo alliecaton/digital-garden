@@ -3,7 +3,6 @@ import RecentPosts from '@/components/RecentPosts.vue'
 import RecentBookmarks from '@/components/RecentBookmarks.vue'
 import CurrentlyReading from '@/components/CurrentlyReading.vue'
 import CurrentlyListening from '@/components/CurrentlyListening.vue'
-import TwitterFeed from '@/components/TwitterFeed.vue'
 </script>
 
 <template>
@@ -30,6 +29,14 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
           </p>
 
           <p class="spacedp">
+            the url of this site is a tag that i've used forever for various
+            accounts, and is a nod to the whales that I've "adopted" through
+            <a href="whales.org">whales.org</a> -- something I've been doing
+            since i was a kid. my current whale daughter is
+            <a href="https://www.whaleswithnames.com/mars/">Mars</a> 🐋
+          </p>
+
+          <p class="spacedp">
             if you want to chat (or if you encounter a bug 🐞) feel free to
             <a target="blank" href="mailto:alliecaton3@gmail.com"
               >reach out to me by email</a
@@ -45,8 +52,8 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
     </div>
 
     <div class="section sub-section">
-        <CurrentlyReading />
-        <CurrentlyListening />
+      <CurrentlyReading />
+      <CurrentlyListening />
     </div>
   </div>
 </template>
@@ -86,7 +93,7 @@ import TwitterFeed from '@/components/TwitterFeed.vue'
   }
 
   flex-direction: column;
-  
+
   @include md {
     flex-direction: row;
     gap: 50px;

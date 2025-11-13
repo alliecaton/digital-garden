@@ -2,7 +2,7 @@
 
 Welcome to my digital garden! 🌱
 
-[Visit my digital garden](https://garden.alliecaton.com)
+[Visit my digital garden](https://whale-mom.com)
 
 [Backend repo](https://github.com/alliecaton/api-digital-garden)
 

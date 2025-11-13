@@ -150,6 +150,47 @@ const previewButtonText = computed(() => {
 
   return 'show preview'
 })
+
+const uploadingImage = ref(false)
+const imageUploadError = ref(false)
+
+const handleImageUpload = async (event: Event) => {
+  const target = event.target as HTMLInputElement
+  const file = target.files?.[0]
+
+  if (!file) return
+
+  uploadingImage.value = true
+  imageUploadError.value = false
+
+  const formData = new FormData()
+  formData.append('image', file)
+
+  try {
+    const data = await fetch({
+      method: 'post',
+      path: '/upload/image',
+      data: formData,
+    })
+
+    if (data) {
+      const imageUrl = data.url
+      const markdownImage = `![alt text](${imageUrl})`
+
+      if (post.content) {
+        post.content += `\n\n${markdownImage}\n`
+      } else {
+        post.content = markdownImage
+      }
+    }
+  } catch (e) {
+    console.error(e)
+    imageUploadError.value = true
+  } finally {
+    uploadingImage.value = false
+    target.value = ''
+  }
+}
 </script>
 
 <template>
@@ -162,24 +203,50 @@ const previewButtonText = computed(() => {
 
     <div>
       <label>title:</label>
-      <br />
       <input type="text" v-model="post.title" />
     </div>
 
     <div class="content">
       <label>content:</label>
-      <br />
-      <textarea type="textarea" rows="20" v-model="post.content"></textarea>
+
+      <button class="preview-button" @click="togglePreview">
+        {{ previewButtonText }}
+      </button>
+      <Sanitized
+        class="preview-section"
+        v-if="preview"
+        :content="post.content"
+      />
+      <textarea
+        v-else
+        type="textarea"
+        rows="20"
+        v-model="post.content"
+      ></textarea>
+    </div>
+
+    <div class="image-upload">
+      <label for="image-upload" class="image-upload-label">
+        Upload Image
+      </label>
+      <input
+        id="image-upload"
+        type="file"
+        accept="image/*"
+        @change="handleImageUpload"
+        style="display: none"
+      />
+      <div v-if="uploadingImage" class="upload-status">Uploading...</div>
+      <div v-if="imageUploadError" class="upload-status upload-error">
+        Image upload failed. Please try again.
+      </div>
     </div>
 
     <TagCreate @updateParentTags="updateParentTags" />
 
-    <button @click="createOrUpdate">{{ submitButtonText }}</button>
-    <br />
-    <button @click="togglePreview">
-      {{ previewButtonText }}
+    <button class="submit" @click="createOrUpdate">
+      {{ submitButtonText }}
     </button>
-    <Sanitized class="preview-section" v-if="preview" :content="post.content" />
 
     <div class="posts" v-if="!loadingPosts">
       <div class="post" v-for="post in posts" :key="post.id">
@@ -209,6 +276,7 @@ input,
 textarea {
   width: 100%;
   padding: 10px;
+  font-size: 16px;
 }
 
 .posts {
@@ -235,5 +303,51 @@ textarea {
   margin-top: 20px;
   padding: 10px;
   border-radius: 2px;
+}
+
+.image-upload {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.image-upload-label,
+.submit,
+.preview-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: $light;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    outline: 3px solid $light;
+  }
+}
+
+.preview-button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px 10px;
+  font-size: 14px;
+}
+
+.upload-status {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.upload-success {
+  color: green;
+  font-weight: bold;
+}
+
+.upload-error {
+  color: red;
+  font-weight: bold;
 }
 </style>

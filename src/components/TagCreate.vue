@@ -38,12 +38,16 @@ onMounted(async () => {
       </div>
     </div>
 
-    <div class="tag__inputs" v-if="showTagInputs">
-      <label>emoji: </label>
-      <input v-model="emoji" />
+    <div v-if="showTagInputs">
+      <div class="emoji-input">
+        <label>emoji: </label>
+        <input v-model="emoji" />
+      </div>
 
-      <label>name: </label>
-      <input v-model="name" />
+      <div>
+        <label>name: </label>
+        <input v-model="name" />
+      </div>
 
       <button v-if="emoji && name" @click="() => addTagToList()">
         add tag
@@ -70,14 +74,12 @@ onMounted(async () => {
   margin-bottom: 10px;
 }
 
-.tag {
+input {
+  font-size: 16px;
 }
 
-.tag__inputs {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-wrap: wrap;
+.emoji-input {
+  margin: 10px 0;
 }
 
 .tag__add {

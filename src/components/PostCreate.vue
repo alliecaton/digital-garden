@@ -156,31 +156,34 @@ const imageUploadError = ref(false)
 
 const handleImageUpload = async (event: Event) => {
   const target = event.target as HTMLInputElement
-  const file = target.files?.[0]
+  const files = target.files
 
-  if (!file) return
+  if (!files || files.length === 0) return
 
   uploadingImage.value = true
   imageUploadError.value = false
 
   const formData = new FormData()
-  formData.append('image', file)
+  for (let i = 0; i < files.length; i++) {
+    formData.append('images', files[i])
+  }
 
   try {
     const data = await fetch({
       method: 'post',
-      path: '/upload/image',
+      path: '/upload/images',
       data: formData,
     })
 
-    if (data) {
-      const imageUrl = data.url
-      const markdownImage = `![alt text](${imageUrl})`
+    if (data && data.success && data.images) {
+      const markdownImages = data.images
+        .map((image: { url: string }) => `![alt text](${image.url})`)
+        .join('\n\n')
 
       if (post.content) {
-        post.content += `\n\n${markdownImage}\n`
+        post.content += `\n\n${markdownImages}\n`
       } else {
-        post.content = markdownImage
+        post.content = markdownImages
       }
     }
   } catch (e) {
@@ -227,12 +230,13 @@ const handleImageUpload = async (event: Event) => {
 
     <div class="image-upload">
       <label for="image-upload" class="image-upload-label">
-        Upload Image
+        Upload Images
       </label>
       <input
         id="image-upload"
         type="file"
         accept="image/*"
+        multiple
         @change="handleImageUpload"
         style="display: none"
       />

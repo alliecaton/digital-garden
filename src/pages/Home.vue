@@ -33,8 +33,7 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
             accounts, and is a nod to the
             <a href="https://adopt-us.whales.org/whale-adoption-project/"
               >whales that i've "adopted"</a
-            >, something I've been doing since i was a kid. my current whale
-            daughter is
+            >-- something I've been doing since i was a kid. i currently adopt
             <a href="https://www.whaleswithnames.com/mars/">Mars</a> 🐋
           </p>
 

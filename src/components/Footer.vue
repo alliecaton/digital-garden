@@ -1,12 +1,27 @@
 <template>
   <footer class="links-container">
     <div>
-      ✉️ email:
-      <a href="mailto:alliecaton3@gmail.com">alliecaton3@gmail.com</a>
-      <br />
-      <br />
-      <div>🔗 personal links:</div>
+      <div class="webrings">
+        webrings:
+        <div className="webring-links">
+          <a
+            href="https://webring.bucketfish.me/redirect.html?to=prev&name=whale-mom"
+            target="_blank"
+            >prev</a
+          >
+          <a target="_blank" href="https://webring.bucketfish.me"
+            >🌈 bucket webring 🌈</a
+          >
+          <a
+            href="https://webring.bucketfish.me/redirect.html?to=next&name=whale-mom"
+            target="_blank"
+            >next</a
+          >
+        </div>
+        <div></div>
+      </div>
       <div class="links">
+        <a href="mailto:alliecaton3@gmail.com">alliecaton3@gmail.com</a> |
         <a class="link" href="https://github.com/alliecaton" target="blank"
           >github</a
         >
@@ -20,25 +35,6 @@
           href="https://www.linkedin.com/in/alliecaton/"
           target="blank"
           >linkedin</a
-        >
-      </div>
-    </div>
-
-    <div>
-      <div class="garden-links">🔗 garden links:</div>
-      <div class="links">
-        <a
-          class="link"
-          href="https://github.com/alliecaton/digital-garden"
-          target="blank"
-          >client repo</a
-        >
-        |
-        <a
-          class="link"
-          href="https://github.com/alliecaton/api-digital-garden"
-          target="blank"
-          >api repo</a
         >
       </div>
     </div>
@@ -56,5 +52,18 @@
   margin-top: 20px;
   padding: 15px;
   border-radius: 4px;
+}
+
+.webring-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.webrings {
+  border: 1px dotted $purple;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
 }
 </style>

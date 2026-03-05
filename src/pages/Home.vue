@@ -25,16 +25,7 @@ import CurrentlyListening from '@/components/CurrentlyListening.vue'
             boulder,
             <a target="_blank" href="https://bandcamp.com/alliecaton"
               >listen to fast music</a
-            >, make things with my hands, and engage with my community.
-          </p>
-
-          <p class="spacedp">
-            the url of this site is a tag that i've used forever for various
-            accounts, and is a nod to the
-            <a href="https://adopt-us.whales.org/whale-adoption-project/"
-              >whales that i've "adopted"</a
-            >-- something I've been doing since i was a kid. i currently adopt
-            <a href="https://www.whaleswithnames.com/mars/">Mars</a> 🐋
+            >, crochet, and engage with my community.
           </p>
 
           <p class="spacedp">
